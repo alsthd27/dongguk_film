@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+<div class="relative sm:pt-6 lg:pt-8">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="relative shadow-xl sm:rounded-2xl overflow-hidden">
+            <div class="absolute inset-0">
+                <div class="mix-blend-multiply w-full h-full">
+                    <!-- Swiper -->
+                    <div class="swiper mySwiper w-full h-full">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img class="object-cover w-full h-full" src="https://source.unsplash.com/random/1920×1080/?video editing" />
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="object-cover w-full h-full" src="https://source.unsplash.com/random/1920×1080/?camera lens" />
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="object-cover w-full h-full" src="https://source.unsplash.com/random/1920×1080/?film gear" />
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="object-cover w-full h-full" src="https://source.unsplash.com/random/1920×1080/?camera gear" />
+                            </div>
+                            <div class="swiper-slide">
+                                <img class="object-cover w-full h-full" src="https://source.unsplash.com/random/1920×1080/?video camera" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute inset-0 bg-flamingo-700 mix-blend-multiply"></div>
+            </div>
+            <div class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
+                <h1 class="text-center text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+                    <span class="block text-white">동국대학교 영화영상학과</span>
+                    <span class="block text-flamingo-200">All-in-One Platform</span>
+                </h1>
+                <p
+                    class="mt-6 max-w-lg mx-auto text-center text-base sm:text-lg lg:text-xl text-flamingo-100 sm:max-w-3xl">
+                    <b>디닷에프</b>에 오신 것을 환영해요! <span id="emoji" aria-hidden="true"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="space-y-24 pt-16">
+    <div class="overflow-hidden">
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative lg:grid lg:grid-cols-3 lg:gap-x-8">
+                <div>
+                    <h2 class="text-base font-semibold text-flamingo-600 uppercase tracking-wide">All-in-One Platform</h2>
+                    <p class="mt-2 text-3xl font-extrabold text-gray-900">학과 생활에 필요한 모든 것</p>
+                    <p class="mt-4 text-lg text-gray-500">동국대학교 영화영상학과 학생들을 위한 올인원 플랫폼 <b>디닷에프</b>에 대해 알아보세요.</p>
+                </div>
+                <dl
+                    class="mt-10 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-8 sm:gap-y-10 lg:mt-0 lg:col-span-2">
+                    <div>
+                        <dt>
+                            <div
+                                class="flex items-center justify-center h-12 w-12 rounded-md bg-flamingo-600 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <p class="mt-5 text-lg leading-6 font-medium text-gray-900">시설이용</p>
+                        </dt>
+                        <dd class="mt-2 text-base text-gray-500">기자재, 실습 공간, 보관함, 용품 등 학과 시설을 원하는 일정에 맞춰 이용할 수 있어요.</dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <div
+                                class="flex items-center justify-center h-12 w-12 rounded-md bg-flamingo-600 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </div>
+                            <p class="mt-5 text-lg leading-6 font-medium text-gray-900">전자문서</p>
+                        </dt>
+                        <dd class="mt-2 text-base text-gray-500">별도의 워드 프로세서 없이 각종 문서를 작성·제출하거나 디지털 파일로 발급받을 수 있어요.</dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <div
+                                class="flex items-center justify-center h-12 w-12 rounded-md bg-flamingo-600 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <p class="mt-5 text-lg leading-6 font-medium text-gray-900">편의기능</p>
+                        </dt>
+                        <dd class="mt-2 text-base text-gray-500">영화영상학과 학생들이 자주 찾을 만한 편의기능을 이용할 수 있어요.</dd>
+                    </div>
+                    <div>
+                        <dt>
+                            <div
+                                class="flex items-center justify-center h-12 w-12 rounded-md bg-flamingo-600 text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <p class="mt-5 text-lg leading-6 font-medium text-gray-900">공지사항</p>
+                        </dt>
+                        <dd class="mt-2 text-base text-gray-500">학생자치기구 관련 알림이나 시설이용에 관한 규정을 확인할 수 있어요.</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
+        <div>
+            <h2 class="text-base font-semibold text-flamingo-600 uppercase tracking-wide">Mobile & Privacy First</h2>
+            <p class="mt-2 text-3xl font-extrabold text-gray-900">언제 어디서나 쉽고 안전하게</p>
+            <p class="mt-4 text-lg text-gray-500">센스 있는 <b>디닷에프</b>로 생산성과 효율성을 높여보세요.</p>
+        </div>
+        <div class="mt-12 lg:mt-0 lg:col-span-2">
+            <dl
+                class="space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:grid-rows-3 sm:grid-flow-col sm:gap-x-6 sm:gap-y-10 lg:gap-x-8">
+                <div class="relative">
+                    <dt>
+                        <svg class="absolute h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <p class="ml-9 text-lg leading-6 font-medium text-gray-900">모든 디바이스 지원</p>
+                    </dt>
+                    <dd class="mt-2 ml-9 text-base text-gray-500">데스크탑, 모바일 등 디바이스 종류와 관계없이 언제 어디서나 이용할 수 있어요.</dd>
+                </div>
+                <div class="relative">
+                    <dt>
+                        <svg class="absolute h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <p class="ml-9 text-lg leading-6 font-medium text-gray-900">개인정보 보호</p>
+                    </dt>
+                    <dd class="mt-2 ml-9 text-base text-gray-500">반드시 필요한 개인정보만 수집하고 일정 기간이 지나면 자동 파기되니 안심하고 이용할 수 있어요.
+                    </dd>
+                </div>
+                <div class="relative">
+                    <dt>
+                        <svg class="absolute h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <p class="ml-9 text-lg leading-6 font-medium text-gray-900">데이터 보안</p>
+                    </dt>
+                    <dd class="mt-2 ml-9 text-base text-gray-500">Google Workspace 기반으로 데이터 무단 액세스를 방지하고 무결성, 가용을 안정적으로 유지해요.</dd>
+                </div>
+                <div class="relative">
+                    <dt>
+                        <svg class="absolute h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <p class="ml-9 text-lg leading-6 font-medium text-gray-900">업무 자동화</p>
+                    </dt>
+                    <dd class="mt-2 ml-9 text-base text-gray-500">이제 단순·반복 업무는 디닷에프에 맡기고 더 중요한 일에 집중하세요.</dd>
+                </div>
+                <div class="relative">
+                    <dt>
+                        <svg class="absolute h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <p class="ml-9 text-lg leading-6 font-medium text-gray-900">이메일 알림</p>
+                    </dt>
+                    <dd class="mt-2 ml-9 text-base text-gray-500">서비스 진행 상황이나 이용 내역을 이메일로 받아볼 수 있어요.</dd>
+                </div>
+                <div class="relative">
+                    <dt>
+                        <svg class="absolute h-6 w-6 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <p class="ml-9 text-lg leading-6 font-medium text-gray-900">웹 접근성 향상</p>
+                    </dt>
+                    <dd class="mt-2 ml-9 text-base text-gray-500">누구나 편하게 디닷에프를 이용할 수 있도록 웹 접근성 향상 업데이트가 수시로 이뤄져요.</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 pb-14 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+            <div>
+                <h2 class="text-3xl font-extrabold text-gray-900">자주 묻는 질문</h2>
+                <p class="mt-4 text-lg text-gray-500">찾으시는 답변이 없다면 <a href="#"
+                        class="font-medium text-flamingo-600 hover:text-flamingo-500">학생회</a>에 문의해주세요.
+                </p>
+                <div class="mt-5 text-sm">
+                    <a href="#" class="font-medium text-flamingo-600 hover:text-flamingo-500">또는 디닷에프 운영자에게 문의하기 <span
+                            aria-hidden="true">→</span></a>
+                </div>
+            </div>
+            <div class="mt-12 lg:mt-0 lg:col-span-2">
+                <dl class="space-y-12">
+                    <div>
+                        <dt class="text-lg leading-6 font-medium text-gray-900">학과 웹사이트와 디닷에프의 차이점이 뭔가요?</dt>
+                        <dd class="mt-2 text-base text-gray-500">디닷에프는 동국대학교 영화영상학과 학생들의 편의 증진을 위해 졸업생이 직접 개발하고 운영 및 유지보수하는 서비스예요.
+                        </dd>
+                    </div>
+                    <div>
+                        <dt class="text-lg leading-6 font-medium text-gray-900">디닷에프는 누가 이용할 수 있나요?</dt>
+                        <dd class="mt-2 text-base text-gray-500">동국대학교 예술대학 영화영상학과, 영상대학원 영화영상제작학과, 일반대학원 영화영상학과
+                            재학생·휴학생이
+                            이용할 수 있어요.</dd>
+                    </div>
+                    <div>
+                        <dt class="text-lg leading-6 font-medium text-gray-900">URL 단축은 어떤 서비스인가요?</dt>
+                        <dd class="mt-2 text-base text-gray-500">길고 복잡한 URL을 디닷에프 도메인이 적용된 짧은 URL(예:
+                            https://dongguk.film/example)로 단축해주는 기능이에요.</dd>
+                    </div>
+                    <div>
+                        <dt class="text-lg leading-6 font-medium text-gray-900">카카오톡 알림톡은 누가 발신할 수 있나요?</dt>
+                        <dd class="mt-2 text-base text-gray-500">카카오톡 알림톡은 학생회, 기재실, 시사실, 암실·프로젝트실 구성원과 디닷에프 운영자가 보낼
+                            수 있어요.</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'swiper.js' %}"></script>
+<script src="{% static 'emoji.js' %}"></script>
+{% endblock %}
