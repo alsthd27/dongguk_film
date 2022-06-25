@@ -69,6 +69,19 @@
             {% include "shared/_footer.html" %}
         </div>
     </div>
+
+    <!-- MS Internet Explorer not supported -->
+    <script type="text/javascript">
+        (function msIeAlert() {
+            let agent = navigator.userAgent.toLowerCase();
+            console.log((agent.indexOf("trident") || agent.indexOf("msie")) !== -1)
+            if ((agent.indexOf("trident") || agent.indexOf("msie")) !== -1) {
+                alert("디닷에프는 MS Internet Explorer를 지원하지 않습니다.\n번거로우시겠지만 디닷에프에 최적화된 브라우저로 이용 부탁드립니다. 🙏\n\n권장 브라우저: Google Chrome, MS Edge, Naver Whale")
+                document.body.setAttribute("style", "position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);")
+                document.body.innerHTML = "<img src='{% static 'd_dot_f_logo.svg' %}' style='height: 3rem; text-align: center;' /><p style='margin-top: 1rem;'>디닷에프는 MS Internet Explorer를 지원하지 않습니다.<br>번거로우시겠지만 디닷에프에 최적화된 브라우저로 이용 부탁드립니다. 🙏<br><br>권장 브라우저: <a href='https://www.google.com/chrome/' style='color: #F15922;'>Google Chrome</a>, <a href='microsoft-edge:{{ request.build_absolute_uri }}' style='color: #F15922;'>MS Edge</a>, <a href='https://whale.naver.com/' style='color: #F15922;'>Naver Whale</a></p>";
+            }
+        })();
+    </script>
 </body>
 
 </html>
