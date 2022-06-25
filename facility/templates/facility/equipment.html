@@ -63,7 +63,7 @@
                                     </span>
                                 </span>
                                 <span class="mt-0.5 ml-4 min-w-0 flex flex-col">
-                                    <span class="text-xs font-semibold tracking-wide">기자재 선택</span>
+                                    <span class="text-xs font-semibold text-gray-500 tracking-wide">기자재 선택</span>
                                     <span class="text-sm font-medium text-gray-500">대여받을 기자재를 선택하세요.</span>
                                 </span>
                             </span>
@@ -92,8 +92,8 @@
                                     </span>
                                 </span>
                                 <span class="mt-0.5 ml-4 min-w-0 flex flex-col">
-                                    <span class="text-xs font-semibold text-gray-500 tracking-wide">최종 확인 및 예약</span>
-                                    <span class="text-sm font-medium text-gray-500">빠뜨린 게 없는지 확인 후 최종 예약하세요.</span>
+                                    <span class="text-xs font-semibold text-gray-500 tracking-wide">서명 및 예약</span>
+                                    <span class="text-sm font-medium text-gray-500">최종 검토 후 서명 및 예약하세요.</span>
                                 </span>
                             </span>
                         </a>
@@ -130,54 +130,54 @@
                                 <label x-radio-group-option=""
                                     class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none border-gray-200"
                                     x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
-                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '졸업작품'), 'border-gray-200': !(value === '졸업작품') }">
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '졸업영화'), 'border-gray-200': !(value === '졸업영화') }">
                                     <span class="flex items-center text-sm">
-                                        <input type="radio" x-model="value" name="pricing-plan" value="졸업작품"
+                                        <input type="radio" x-model="value" name="pricing-plan" value="졸업영화"
                                             class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
                                             aria-labelledby="pricing-plans-0-label"
                                             aria-describedby="pricing-plans-0-description-0 pricing-plans-0-description-1">
-                                        <span id="pricing-plans-0-label" class="ml-3 font-medium text-gray-900"
+                                        <span id="pricing-plans-0-label" class="ml-3 font-semibold text-gray-900"
                                             x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
-                                            :class="{ 'text-flamingo-900': (value === '졸업작품'), 'text-gray-900': !(value === '졸업작품') }">졸업작품</span>
+                                            :class="{ 'text-flamingo-900': (value === '졸업영화'), 'text-gray-900': !(value === '졸업영화') }">졸업영화</span>
                                     </span>
                                     <span id="pricing-plans-0-description-0"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
                                         <span class="font-medium text-gray-900"
                                             x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
-                                            :class="{ 'text-flamingo-900': (value === '졸업작품'), 'text-gray-900': !(value === '졸업작품') }">최대
-                                            8일</span>
+                                            :class="{ 'text-flamingo-900': (value === '졸업영화'), 'text-gray-900': !(value === '졸업영화') }">최대
+                                            8일 대여 가능</span>
                                     </span>
                                     <span id="pricing-plans-0-description-1"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-gray-500"
                                         x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
-                                        :class="{ 'text-flamingo-700': (value === '졸업작품'), 'text-gray-500': !(value === '졸업작품') }">18일
-                                        전부터 3일 전까지 신청 가능</span>
+                                        :class="{ 'text-flamingo-700': (value === '졸업영화'), 'text-gray-500': !(value === '졸업영화') }">최대
+                                        18일 전 ~ 최소 3일 전 예약 가능</span>
                                 </label>
                                 <label x-radio-group-option=""
                                     class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none bg-flamingo-50 border-flamingo-200 z-10"
                                     x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
-                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '제작실기'), 'border-gray-200': !(value === '제작실기') }">
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '캡스톤디자인'), 'border-gray-200': !(value === '캡스톤디자인') }">
                                     <span class="flex items-center text-sm">
-                                        <input type="radio" x-model="value" name="pricing-plan" value="제작실기"
+                                        <input type="radio" x-model="value" name="pricing-plan" value="캡스톤디자인"
                                             class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
                                             aria-labelledby="pricing-plans-1-label"
                                             aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
-                                        <span id="pricing-plans-1-label" class="ml-3 font-medium text-flamingo-900"
+                                        <span id="pricing-plans-1-label" class="ml-3 font-semibold text-flamingo-900"
                                             x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
-                                            :class="{ 'text-flamingo-900': (value === '제작실기'), 'text-gray-900': !(value === '제작실기') }">제작실기</span>
+                                            :class="{ 'text-flamingo-900': (value === '캡스톤디자인'), 'text-gray-900': !(value === '캡스톤디자인') }">캡스톤디자인</span>
                                     </span>
                                     <span id="pricing-plans-1-description-0"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
                                         <span class="font-medium text-flamingo-900"
                                             x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
-                                            :class="{ 'text-flamingo-900': (value === '제작실기'), 'text-gray-900': !(value === '제작실기') }">최대
-                                            7일</span>
+                                            :class="{ 'text-flamingo-900': (value === '캡스톤디자인'), 'text-gray-900': !(value === '캡스톤디자인') }">최대
+                                            7일 대여 가능</span>
                                     </span>
                                     <span id="pricing-plans-1-description-1"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-flamingo-700"
                                         x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
-                                        :class="{ 'text-flamingo-700': (value === '제작실기'), 'text-gray-500': !(value === '제작실기') }">14일
-                                        전부터 3일 전까지 신청 가능</span>
+                                        :class="{ 'text-flamingo-700': (value === '캡스톤디자인'), 'text-gray-500': !(value === '캡스톤디자인') }">최대
+                                        14일 전 ~ 최소 3일 전 예약 가능</span>
                                 </label>
                                 <label x-radio-group-option=""
                                     class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none bg-flamingo-50 border-flamingo-200 z-10"
@@ -188,7 +188,7 @@
                                             class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
                                             aria-labelledby="pricing-plans-1-label"
                                             aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
-                                        <span id="pricing-plans-1-label" class="ml-3 font-medium text-flamingo-900"
+                                        <span id="pricing-plans-1-label" class="ml-3 font-semibold text-flamingo-900"
                                             x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
                                             :class="{ 'text-flamingo-900': (value === '대학원 워크숍'), 'text-gray-900': !(value === '대학원 워크숍') }">대학원
                                             워크숍</span>
@@ -198,13 +198,13 @@
                                         <span class="font-medium text-flamingo-900"
                                             x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
                                             :class="{ 'text-flamingo-900': (value === '대학원 워크숍'), 'text-gray-900': !(value === '대학원 워크숍') }">최대
-                                            7일</span>
+                                            7일 대여 가능</span>
                                     </span>
                                     <span id="pricing-plans-1-description-1"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-flamingo-700"
                                         x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
-                                        :class="{ 'text-flamingo-700': (value === '대학원 워크숍'), 'text-gray-500': !(value === '대학원 워크숍') }">14일
-                                        전부터 3일 전까지 신청 가능</span>
+                                        :class="{ 'text-flamingo-700': (value === '대학원 워크숍'), 'text-gray-500': !(value === '대학원 워크숍') }">최대
+                                        14일 전 ~ 최소 3일 전 예약 가능</span>
                                 </label>
                                 <label x-radio-group-option=""
                                     class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none bg-flamingo-50 border-flamingo-200 z-10"
@@ -215,7 +215,7 @@
                                             class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
                                             aria-labelledby="pricing-plans-1-label"
                                             aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
-                                        <span id="pricing-plans-1-label" class="ml-3 font-medium text-flamingo-900"
+                                        <span id="pricing-plans-1-label" class="ml-3 font-semibold text-flamingo-900"
                                             x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
                                             :class="{ 'text-flamingo-900': (value === '학부 워크숍'), 'text-gray-900': !(value === '학부 워크숍') }">학부
                                             워크숍</span>
@@ -225,13 +225,13 @@
                                         <span class="font-medium text-flamingo-900"
                                             x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
                                             :class="{ 'text-flamingo-900': (value === '학부 워크숍'), 'text-gray-900': !(value === '학부 워크숍') }">최대
-                                            5일</span>
+                                            5일 대여 가능</span>
                                     </span>
                                     <span id="pricing-plans-1-description-1"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-flamingo-700"
                                         x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
-                                        :class="{ 'text-flamingo-700': (value === '학부 워크숍'), 'text-gray-500': !(value === '학부 워크숍') }">10일
-                                        전부터 3일 전까지 신청 가능</span>
+                                        :class="{ 'text-flamingo-700': (value === '학부 워크숍'), 'text-gray-500': !(value === '학부 워크숍') }">최대
+                                        10일 전 ~ 최소 3일 전 예약 가능</span>
                                 </label>
                                 <label x-radio-group-option=""
                                     class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none bg-flamingo-50 border-flamingo-200 z-10"
@@ -242,7 +242,7 @@
                                             class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
                                             aria-labelledby="pricing-plans-1-label"
                                             aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
-                                        <span id="pricing-plans-1-label" class="ml-3 font-medium text-flamingo-900"
+                                        <span id="pricing-plans-1-label" class="ml-3 font-semibold text-flamingo-900"
                                             x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
                                             :class="{ 'text-flamingo-900': (value === '촬영 전공수업'), 'text-gray-900': !(value === '촬영 전공수업') }">촬영
                                             전공수업</span>
@@ -252,13 +252,13 @@
                                         <span class="font-medium text-flamingo-900"
                                             x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
                                             :class="{ 'text-flamingo-900': (value === '촬영 전공수업'), 'text-gray-900': !(value === '촬영 전공수업') }">최대
-                                            5일</span>
+                                            5일 대여 가능</span>
                                     </span>
                                     <span id="pricing-plans-1-description-1"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-flamingo-700"
                                         x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
-                                        :class="{ 'text-flamingo-700': (value === '촬영 전공수업'), 'text-gray-500': !(value === '촬영 전공수업') }">10일
-                                        전부터 3일 전까지 신청 가능</span>
+                                        :class="{ 'text-flamingo-700': (value === '촬영 전공수업'), 'text-gray-500': !(value === '촬영 전공수업') }">최대
+                                        10일 전 ~ 최소 3일 전 예약 가능</span>
                                 </label>
                                 <label x-radio-group-option=""
                                     class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none bg-flamingo-50 border-flamingo-200 z-10"
@@ -269,7 +269,7 @@
                                             class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
                                             aria-labelledby="pricing-plans-1-label"
                                             aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
-                                        <span id="pricing-plans-1-label" class="ml-3 font-medium text-flamingo-900"
+                                        <span id="pricing-plans-1-label" class="ml-3 font-semibold text-flamingo-900"
                                             x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
                                             :class="{ 'text-flamingo-900': (value === '기타 전공수업'), 'text-gray-900': !(value === '기타 전공수업') }">기타
                                             전공수업</span>
@@ -279,13 +279,13 @@
                                         <span class="font-medium text-flamingo-900"
                                             x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
                                             :class="{ 'text-flamingo-900': (value === '기타 전공수업'), 'text-gray-900': !(value === '기타 전공수업') }">최대
-                                            2일</span>
+                                            2일 대여 가능</span>
                                     </span>
                                     <span id="pricing-plans-1-description-1"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-flamingo-700"
                                         x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
-                                        :class="{ 'text-flamingo-700': (value === '기타 전공수업'), 'text-gray-500': !(value === '기타 전공수업') }">7일
-                                        전부터 3일 전까지 신청 가능</span>
+                                        :class="{ 'text-flamingo-700': (value === '기타 전공수업'), 'text-gray-500': !(value === '기타 전공수업') }">최대
+                                        7일 전 ~ 최소 3일 전 예약 가능</span>
                                 </label>
                                 <label x-radio-group-option=""
                                     class="rounded-bl-md rounded-br-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none border-gray-200"
@@ -296,7 +296,7 @@
                                             class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
                                             aria-labelledby="pricing-plans-2-label"
                                             aria-describedby="pricing-plans-2-description-0 pricing-plans-2-description-1">
-                                        <span id="pricing-plans-2-label" class="ml-3 font-medium text-gray-900"
+                                        <span id="pricing-plans-2-label" class="ml-3 font-semibold text-gray-900"
                                             x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
                                             :class="{ 'text-flamingo-900': (value === '개인작품'), 'text-gray-900': !(value === '개인작품') }">개인작품</span>
                                     </span>
@@ -305,13 +305,13 @@
                                         <span class="font-medium text-gray-900"
                                             x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
                                             :class="{ 'text-flamingo-900': (value === '개인작품'), 'text-gray-900': !(value === '개인작품') }">최대
-                                            5일</span>
+                                            5일 대여 가능</span>
                                     </span>
                                     <span id="pricing-plans-2-description-1"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-gray-500"
                                         x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
-                                        :class="{ 'text-flamingo-700': (value === '개인작품'), 'text-gray-500': !(value === '개인작품') }">5일
-                                        전부터 3일 전까지 신청 가능</span>
+                                        :class="{ 'text-flamingo-700': (value === '개인작품'), 'text-gray-500': !(value === '개인작품') }">최대
+                                        5일 전 ~ 최소 3일 전 예약 가능</span>
                                 </label>
                             </div>
                         </fieldset>
@@ -916,7 +916,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="pt-4 lg:hidden">
+                        <div class="pt-4">
                             <ol
                                 class="divide-y divide-gray-100 overflow-hidden rounded-lg bg-white text-sm shadow-sm border border-gray-200">
 
