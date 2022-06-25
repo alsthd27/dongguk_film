@@ -1,0 +1,972 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block meta %}
+<meta property="og:url" content="{% url 'facility:equipment' %}">
+<meta property="og:title" content="기자재 - 디닷에프">
+<meta property="og:description" content="카메라, 조명기, 녹음기 등 기자재 대여 │ 기자재 - 디닷에프">
+<meta name="description" content="카메라, 조명기, 녹음기 등 기자재 대여 │ 기자재 - 디닷에프">
+<!-- <meta name="robots" content="index,follow"> -->
+{% endblock %}
+
+{% block title %}기자재 - 디닷에프{% endblock %}
+
+{% block body %}
+<main>
+    <div class="lg:border-t lg:border-b lg:border-gray-200">
+        <nav class="mx-auto max-w-7xl lg:px-8" aria-label="진행 절차">
+            <ol role="list" class="overflow-hidden lg:flex lg:border-l lg:border-r lg:border-gray-200">
+                <!-- Step One -->
+                <li class="relative overflow-hidden lg:flex-1">
+                    <div class="border border-gray-200 overflow-hidden border-b-0 lg:border-0">
+                        <a href="#" aria-current="step">
+                            <span
+                                class="absolute top-0 left-0 w-1 h-full bg-flamingo-600 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto"
+                                aria-hidden="true"></span>
+                            <span class="px-6 py-5 flex items-start text-sm font-medium lg:pl-9">
+                                <span class="flex-shrink-0">
+                                    <span
+                                        class="w-10 h-10 flex items-center justify-center border-2 border-flamingo-600 rounded-full">
+                                        <span class="text-flamingo-600">01</span>
+                                    </span>
+                                </span>
+                                <span class="mt-0.5 ml-4 min-w-0 flex flex-col">
+                                    <span class="text-xs font-semibold text-flamingo-600 tracking-wide">용도 및 일정
+                                        선택</span>
+                                    <span class="text-sm font-medium text-gray-500">기자재 용도와 대여·반납일을 선택하세요.</span>
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+                </li>
+                <!-- Step Two -->
+                <li class="relative overflow-hidden lg:flex-1">
+                    <div class="border border-gray-200 overflow-hidden lg:border-0">
+                        <a href="#" class="group">
+                            <span
+                                class="absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-gray-200 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto"
+                                aria-hidden="true"></span>
+                            <span class="px-6 py-5 flex items-start text-sm font-medium">
+                                <span class="flex-shrink-0">
+                                    <!-- <span
+                                        class="w-10 h-10 flex items-center justify-center bg-flamingo-600 rounded-full">
+                                        <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd"
+                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </span> -->
+                                    <span
+                                        class="w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full">
+                                        <span class="text-gray-500">02</span>
+                                    </span>
+                                </span>
+                                <span class="mt-0.5 ml-4 min-w-0 flex flex-col">
+                                    <span class="text-xs font-semibold tracking-wide">기자재 선택</span>
+                                    <span class="text-sm font-medium text-gray-500">대여받을 기자재를 선택하세요.</span>
+                                </span>
+                            </span>
+                        </a>
+                        <div class="hidden absolute top-0 left-0 w-3 inset-0 lg:block" aria-hidden="true">
+                            <svg class="h-full w-full text-gray-300" viewBox="0 0 12 82" fill="none"
+                                preserveAspectRatio="none">
+                                <path d="M0.5 0V31L10.5 41L0.5 51V82" stroke="currentcolor"
+                                    vector-effect="non-scaling-stroke" />
+                            </svg>
+                        </div>
+                    </div>
+                </li>
+                <!-- Step Three -->
+                <li class="relative overflow-hidden lg:flex-1">
+                    <div class="border border-gray-200 overflow-hidden border-t-0 lg:border-0">
+                        <a href="#" class="group">
+                            <span
+                                class="absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-gray-200 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto"
+                                aria-hidden="true"></span>
+                            <span class="px-6 py-5 flex items-start text-sm font-medium lg:pl-9">
+                                <span class="flex-shrink-0">
+                                    <span
+                                        class="w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-full">
+                                        <span class="text-gray-500">03</span>
+                                    </span>
+                                </span>
+                                <span class="mt-0.5 ml-4 min-w-0 flex flex-col">
+                                    <span class="text-xs font-semibold text-gray-500 tracking-wide">최종 확인 및 예약</span>
+                                    <span class="text-sm font-medium text-gray-500">빠뜨린 게 없는지 확인 후 최종 예약하세요.</span>
+                                </span>
+                            </span>
+                        </a>
+                        <div class="hidden absolute top-0 left-0 w-3 inset-0 lg:block" aria-hidden="true">
+                            <svg class="h-full w-full text-gray-300" viewBox="0 0 12 82" fill="none"
+                                preserveAspectRatio="none">
+                                <path d="M0.5 0V31L10.5 41L0.5 51V82" stroke="currentcolor"
+                                    vector-effect="non-scaling-stroke" />
+                            </svg>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 py-10 sm:px-6 lg:px-8">
+
+        <div>
+            <div class="md:grid md:grid-cols-3 md:gap-6">
+                <div class="md:col-span-1">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">용도</h3>
+                    <p class="mt-1 text-sm text-gray-600">
+                        기자재 용도를 선택하세요.
+                    </p>
+                </div>
+                <div class="flex justify-center mt-5 md:mt-0 md:col-span-2">
+                    <div class="w-full mx-auto">
+                        <fieldset x-data="window.Components.radioGroup({ initialCheckedIndex: 0 })" x-init="init()">
+                            <legend class="sr-only">
+                                기자재 용도
+                            </legend>
+                            <div class="relative shadow-sm bg-white rounded-md -space-y-px">
+                                <label x-radio-group-option=""
+                                    class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none border-gray-200"
+                                    x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '졸업작품'), 'border-gray-200': !(value === '졸업작품') }">
+                                    <span class="flex items-center text-sm">
+                                        <input type="radio" x-model="value" name="pricing-plan" value="졸업작품"
+                                            class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
+                                            aria-labelledby="pricing-plans-0-label"
+                                            aria-describedby="pricing-plans-0-description-0 pricing-plans-0-description-1">
+                                        <span id="pricing-plans-0-label" class="ml-3 font-medium text-gray-900"
+                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            :class="{ 'text-flamingo-900': (value === '졸업작품'), 'text-gray-900': !(value === '졸업작품') }">졸업작품</span>
+                                    </span>
+                                    <span id="pricing-plans-0-description-0"
+                                        class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
+                                        <span class="font-medium text-gray-900"
+                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            :class="{ 'text-flamingo-900': (value === '졸업작품'), 'text-gray-900': !(value === '졸업작품') }">최대
+                                            8일</span>
+                                    </span>
+                                    <span id="pricing-plans-0-description-1"
+                                        class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-gray-500"
+                                        x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
+                                        :class="{ 'text-flamingo-700': (value === '졸업작품'), 'text-gray-500': !(value === '졸업작품') }">18일
+                                        전부터 3일 전까지 신청 가능</span>
+                                </label>
+                                <label x-radio-group-option=""
+                                    class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none bg-flamingo-50 border-flamingo-200 z-10"
+                                    x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '제작실기'), 'border-gray-200': !(value === '제작실기') }">
+                                    <span class="flex items-center text-sm">
+                                        <input type="radio" x-model="value" name="pricing-plan" value="제작실기"
+                                            class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
+                                            aria-labelledby="pricing-plans-1-label"
+                                            aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
+                                        <span id="pricing-plans-1-label" class="ml-3 font-medium text-flamingo-900"
+                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            :class="{ 'text-flamingo-900': (value === '제작실기'), 'text-gray-900': !(value === '제작실기') }">제작실기</span>
+                                    </span>
+                                    <span id="pricing-plans-1-description-0"
+                                        class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
+                                        <span class="font-medium text-flamingo-900"
+                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            :class="{ 'text-flamingo-900': (value === '제작실기'), 'text-gray-900': !(value === '제작실기') }">최대
+                                            7일</span>
+                                    </span>
+                                    <span id="pricing-plans-1-description-1"
+                                        class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-flamingo-700"
+                                        x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
+                                        :class="{ 'text-flamingo-700': (value === '제작실기'), 'text-gray-500': !(value === '제작실기') }">14일
+                                        전부터 3일 전까지 신청 가능</span>
+                                </label>
+                                <label x-radio-group-option=""
+                                    class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none bg-flamingo-50 border-flamingo-200 z-10"
+                                    x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '대학원 워크숍'), 'border-gray-200': !(value === '대학원 워크숍') }">
+                                    <span class="flex items-center text-sm">
+                                        <input type="radio" x-model="value" name="pricing-plan" value="대학원 워크숍"
+                                            class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
+                                            aria-labelledby="pricing-plans-1-label"
+                                            aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
+                                        <span id="pricing-plans-1-label" class="ml-3 font-medium text-flamingo-900"
+                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            :class="{ 'text-flamingo-900': (value === '대학원 워크숍'), 'text-gray-900': !(value === '대학원 워크숍') }">대학원
+                                            워크숍</span>
+                                    </span>
+                                    <span id="pricing-plans-1-description-0"
+                                        class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
+                                        <span class="font-medium text-flamingo-900"
+                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            :class="{ 'text-flamingo-900': (value === '대학원 워크숍'), 'text-gray-900': !(value === '대학원 워크숍') }">최대
+                                            7일</span>
+                                    </span>
+                                    <span id="pricing-plans-1-description-1"
+                                        class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-flamingo-700"
+                                        x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
+                                        :class="{ 'text-flamingo-700': (value === '대학원 워크숍'), 'text-gray-500': !(value === '대학원 워크숍') }">14일
+                                        전부터 3일 전까지 신청 가능</span>
+                                </label>
+                                <label x-radio-group-option=""
+                                    class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none bg-flamingo-50 border-flamingo-200 z-10"
+                                    x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '학부 워크숍'), 'border-gray-200': !(value === '학부 워크숍') }">
+                                    <span class="flex items-center text-sm">
+                                        <input type="radio" x-model="value" name="pricing-plan" value="학부 워크숍"
+                                            class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
+                                            aria-labelledby="pricing-plans-1-label"
+                                            aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
+                                        <span id="pricing-plans-1-label" class="ml-3 font-medium text-flamingo-900"
+                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            :class="{ 'text-flamingo-900': (value === '학부 워크숍'), 'text-gray-900': !(value === '학부 워크숍') }">학부
+                                            워크숍</span>
+                                    </span>
+                                    <span id="pricing-plans-1-description-0"
+                                        class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
+                                        <span class="font-medium text-flamingo-900"
+                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            :class="{ 'text-flamingo-900': (value === '학부 워크숍'), 'text-gray-900': !(value === '학부 워크숍') }">최대
+                                            5일</span>
+                                    </span>
+                                    <span id="pricing-plans-1-description-1"
+                                        class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-flamingo-700"
+                                        x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
+                                        :class="{ 'text-flamingo-700': (value === '학부 워크숍'), 'text-gray-500': !(value === '학부 워크숍') }">10일
+                                        전부터 3일 전까지 신청 가능</span>
+                                </label>
+                                <label x-radio-group-option=""
+                                    class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none bg-flamingo-50 border-flamingo-200 z-10"
+                                    x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '촬영 전공수업'), 'border-gray-200': !(value === '촬영 전공수업') }">
+                                    <span class="flex items-center text-sm">
+                                        <input type="radio" x-model="value" name="pricing-plan" value="촬영 전공수업"
+                                            class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
+                                            aria-labelledby="pricing-plans-1-label"
+                                            aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
+                                        <span id="pricing-plans-1-label" class="ml-3 font-medium text-flamingo-900"
+                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            :class="{ 'text-flamingo-900': (value === '촬영 전공수업'), 'text-gray-900': !(value === '촬영 전공수업') }">촬영
+                                            전공수업</span>
+                                    </span>
+                                    <span id="pricing-plans-1-description-0"
+                                        class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
+                                        <span class="font-medium text-flamingo-900"
+                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            :class="{ 'text-flamingo-900': (value === '촬영 전공수업'), 'text-gray-900': !(value === '촬영 전공수업') }">최대
+                                            5일</span>
+                                    </span>
+                                    <span id="pricing-plans-1-description-1"
+                                        class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-flamingo-700"
+                                        x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
+                                        :class="{ 'text-flamingo-700': (value === '촬영 전공수업'), 'text-gray-500': !(value === '촬영 전공수업') }">10일
+                                        전부터 3일 전까지 신청 가능</span>
+                                </label>
+                                <label x-radio-group-option=""
+                                    class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none bg-flamingo-50 border-flamingo-200 z-10"
+                                    x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '기타 전공수업'), 'border-gray-200': !(value === '기타 전공수업') }">
+                                    <span class="flex items-center text-sm">
+                                        <input type="radio" x-model="value" name="pricing-plan" value="기타 전공수업"
+                                            class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
+                                            aria-labelledby="pricing-plans-1-label"
+                                            aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
+                                        <span id="pricing-plans-1-label" class="ml-3 font-medium text-flamingo-900"
+                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            :class="{ 'text-flamingo-900': (value === '기타 전공수업'), 'text-gray-900': !(value === '기타 전공수업') }">기타
+                                            전공수업</span>
+                                    </span>
+                                    <span id="pricing-plans-1-description-0"
+                                        class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
+                                        <span class="font-medium text-flamingo-900"
+                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            :class="{ 'text-flamingo-900': (value === '기타 전공수업'), 'text-gray-900': !(value === '기타 전공수업') }">최대
+                                            2일</span>
+                                    </span>
+                                    <span id="pricing-plans-1-description-1"
+                                        class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-flamingo-700"
+                                        x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
+                                        :class="{ 'text-flamingo-700': (value === '기타 전공수업'), 'text-gray-500': !(value === '기타 전공수업') }">7일
+                                        전부터 3일 전까지 신청 가능</span>
+                                </label>
+                                <label x-radio-group-option=""
+                                    class="rounded-bl-md rounded-br-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none border-gray-200"
+                                    x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '개인작품'), 'border-gray-200': !(value === '개인작품') }">
+                                    <span class="flex items-center text-sm">
+                                        <input type="radio" x-model="value" name="pricing-plan" value="개인작품"
+                                            class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
+                                            aria-labelledby="pricing-plans-2-label"
+                                            aria-describedby="pricing-plans-2-description-0 pricing-plans-2-description-1">
+                                        <span id="pricing-plans-2-label" class="ml-3 font-medium text-gray-900"
+                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            :class="{ 'text-flamingo-900': (value === '개인작품'), 'text-gray-900': !(value === '개인작품') }">개인작품</span>
+                                    </span>
+                                    <span id="pricing-plans-2-description-0"
+                                        class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
+                                        <span class="font-medium text-gray-900"
+                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            :class="{ 'text-flamingo-900': (value === '개인작품'), 'text-gray-900': !(value === '개인작품') }">최대
+                                            5일</span>
+                                    </span>
+                                    <span id="pricing-plans-2-description-1"
+                                        class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-gray-500"
+                                        x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
+                                        :class="{ 'text-flamingo-700': (value === '개인작품'), 'text-gray-500': !(value === '개인작품') }">5일
+                                        전부터 3일 전까지 신청 가능</span>
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden sm:block" aria-hidden="true">
+            <div class="py-5">
+                <div class="border-t border-gray-200"></div>
+            </div>
+        </div>
+
+        <div class="mt-10 sm:mt-0">
+            <div class="md:grid md:grid-cols-3 md:gap-6">
+                <div class="md:col-span-1">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">일정</h3>
+                    <p class="mt-1 text-sm text-gray-600">
+                        기자재 대여·반납일을 선택하세요.
+                    </p>
+                </div>
+                <div class="mt-5 md:mt-0 md:col-span-2">
+                    <div class="mx-auto max-w-7xl lg:flex lg:h-full lg:flex-col">
+                        <header class="relative z-10 flex items-center justify-between pb-4 lg:flex-none">
+                            <h1 class="text-lg font-semibold text-gray-900">
+                                <time datetime="2022-01">2022년 1월</time>
+                            </h1>
+                            <div class="flex items-center">
+                                <div class="flex items-center rounded-md shadow-sm md:items-stretch">
+                                    <button type="button"
+                                        class="flex items-center justify-center rounded-l-md border border-r-0 border-gray-200 bg-white py-2 pl-3 pr-4 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50">
+                                        <span class="sr-only">지난달</span>
+                                        <svg class="h-5 w-5" x-description="Heroicon name: solid/chevron-left"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path fill-rule="evenodd"
+                                                d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                    <button type="button"
+                                        class="hidden border-t border-b border-gray-200 bg-white px-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:relative md:block">오늘</button>
+                                    <span class="relative -mx-px h-5 w-px bg-gray-300 md:hidden"></span>
+                                    <button type="button"
+                                        class="flex items-center justify-center rounded-r-md border border-l-0 border-gray-200 bg-white py-2 pl-4 pr-3 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50">
+                                        <span class="sr-only">다음달</span>
+                                        <svg class="h-5 w-5" x-description="Heroicon name: solid/chevron-right"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path fill-rule="evenodd"
+                                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div x-data="Components.menu({ open: false })" x-init="init()"
+                                    @keydown.escape.stop="open = false; focusButton()" @click.away="onClickAway($event)"
+                                    class="relative ml-6 md:hidden">
+                                    <button type="button"
+                                        class="-mx-2 flex items-center rounded-full border border-transparent p-2 text-gray-400 hover:text-gray-500"
+                                        id="menu-0-button" x-ref="button" @click="onButtonClick()"
+                                        @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()"
+                                        aria-expanded="false" aria-haspopup="true"
+                                        x-bind:aria-expanded="open.toString()" @keydown.arrow-up.prevent="onArrowUp()"
+                                        @keydown.arrow-down.prevent="onArrowDown()">
+                                        <span class="sr-only">메뉴 열기</span>
+                                        <svg class="h-5 w-5" x-description="Heroicon name: solid/dots-horizontal"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
+                                            </path>
+                                        </svg>
+                                    </button>
+                                    <div x-show="open" x-transition:enter="transition ease-out duration-100"
+                                        x-transition:enter-start="transform opacity-0 scale-95"
+                                        x-transition:enter-end="transform opacity-100 scale-100"
+                                        x-transition:leave="transition ease-in duration-75"
+                                        x-transition:leave-start="transform opacity-100 scale-100"
+                                        x-transition:leave-end="transform opacity-0 scale-95"
+                                        class="focus:outline-none absolute right-0 mt-3 w-36 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+                                        x-ref="menu-items" x-description="Dropdown menu, show/hide based on menu state."
+                                        x-bind:aria-activedescendant="activeDescendant" role="menu"
+                                        aria-orientation="vertical" aria-labelledby="menu-0-button" tabindex="-1"
+                                        @keydown.arrow-up.prevent="onArrowUp()"
+                                        @keydown.arrow-down.prevent="onArrowDown()" @keydown.tab="open = false"
+                                        @keydown.enter.prevent="open = false; focusButton()"
+                                        @keyup.space.prevent="open = false; focusButton()" style="display: none;">
+                                        <div class="py-1" role="none">
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700"
+                                                x-state:on="Active" x-state:off="Not Active"
+                                                :class="{ 'bg-gray-100 text-gray-900': activeIndex === 0, 'text-gray-700': !(activeIndex === 0) }"
+                                                role="menuitem" tabindex="-1" id="menu-0-item-0"
+                                                @mouseenter="activeIndex = 0" @mouseleave="activeIndex = -1"
+                                                @click="open = false; focusButton()">Create event</a>
+                                        </div>
+                                        <div class="py-1" role="none">
+                                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm"
+                                                :class="{ 'bg-gray-100 text-gray-900': activeIndex === 1, 'text-gray-700': !(activeIndex === 1) }"
+                                                role="menuitem" tabindex="-1" id="menu-0-item-1"
+                                                @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1"
+                                                @click="open = false; focusButton()">Go to today</a>
+                                        </div>
+                                        <div class="py-1" role="none">
+                                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm"
+                                                :class="{ 'bg-gray-100 text-gray-900': activeIndex === 2, 'text-gray-700': !(activeIndex === 2) }"
+                                                role="menuitem" tabindex="-1" id="menu-0-item-2"
+                                                @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1"
+                                                @click="open = false; focusButton()">Day view</a>
+                                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm"
+                                                :class="{ 'bg-gray-100 text-gray-900': activeIndex === 3, 'text-gray-700': !(activeIndex === 3) }"
+                                                role="menuitem" tabindex="-1" id="menu-0-item-3"
+                                                @mouseenter="activeIndex = 3" @mouseleave="activeIndex = -1"
+                                                @click="open = false; focusButton()">Week view</a>
+                                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm"
+                                                :class="{ 'bg-gray-100 text-gray-900': activeIndex === 4, 'text-gray-700': !(activeIndex === 4) }"
+                                                role="menuitem" tabindex="-1" id="menu-0-item-4"
+                                                @mouseenter="activeIndex = 4" @mouseleave="activeIndex = -1"
+                                                @click="open = false; focusButton()">Month view</a>
+                                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm"
+                                                :class="{ 'bg-gray-100 text-gray-900': activeIndex === 5, 'text-gray-700': !(activeIndex === 5) }"
+                                                role="menuitem" tabindex="-1" id="menu-0-item-5"
+                                                @mouseenter="activeIndex = 5" @mouseleave="activeIndex = -1"
+                                                @click="open = false; focusButton()">Year view</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </header>
+                        <div class="w-full shadow-sm overflow-hidden rounded-md border border-gray-200">
+                            <div class="lg:flex lg:flex-auto lg:flex-col">
+                                <div
+                                    class="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs font-semibold leading-6 text-gray-700 lg:flex-none">
+                                    <div class="bg-white py-2">월<span class="sr-only sm:not-sr-only">요일</span></div>
+                                    <div class="bg-white py-2">화<span class="sr-only sm:not-sr-only">요일</span></div>
+                                    <div class="bg-white py-2">수<span class="sr-only sm:not-sr-only">요일</span></div>
+                                    <div class="bg-white py-2">목<span class="sr-only sm:not-sr-only">요일</span></div>
+                                    <div class="bg-white py-2">금<span class="sr-only sm:not-sr-only">요일</span></div>
+                                    <div class="bg-white text-blue-500 py-2">토<span
+                                            class="sr-only sm:not-sr-only">요일</span></div>
+                                    <div class="bg-white text-red-500 py-2">일<span
+                                            class="sr-only sm:not-sr-only">요일</span></div>
+                                </div>
+                                <div class="flex bg-gray-200 text-xs leading-6 text-gray-700 lg:flex-auto">
+                                    <div class="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-6 lg:gap-px">
+                                        <!--
+                                        Always include: "relative py-2 px-3"
+                                        Is current month, include: "bg-white"
+                                        Is not current month, include: "bg-gray-50 text-gray-500"
+                                    -->
+                                        <div class="relative bg-gray-50 py-2 px-3 text-gray-500">
+                                            <!--
+                                            Is today, include: "flex h-6 w-6 items-center justify-center rounded-full bg-flamingo-600 font-semibold text-white"
+                                        -->
+                                            <time datetime="2021-12-27">27</time>
+                                        </div>
+                                        <div class="relative bg-gray-50 py-2 px-3 text-gray-500">
+                                            <time datetime="2021-12-28">28</time>
+                                        </div>
+                                        <div class="relative bg-gray-50 py-2 px-3 text-gray-500">
+                                            <time datetime="2021-12-29">29</time>
+                                        </div>
+                                        <div class="relative bg-gray-50 py-2 px-3 text-gray-500">
+                                            <time datetime="2021-12-30">30</time>
+                                        </div>
+                                        <div class="relative bg-gray-50 py-2 px-3 text-gray-500">
+                                            <time datetime="2021-12-31">31</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-01">1</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-01">2</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-03">3</time>
+                                            <ol class="mt-2">
+                                                <li>
+                                                    <a href="#" class="group flex">
+                                                        <p
+                                                            class="flex-auto truncate font-medium text-gray-900 group-hover:text-flamingo-600">
+                                                            Design review</p>
+                                                        <time datetime="2022-01-03T10:00"
+                                                            class="ml-3 hidden flex-none text-gray-500 group-hover:text-flamingo-600 xl:block">10AM</time>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="group flex">
+                                                        <p
+                                                            class="flex-auto truncate font-medium text-gray-900 group-hover:text-flamingo-600">
+                                                            Sales meeting</p>
+                                                        <time datetime="2022-01-03T14:00"
+                                                            class="ml-3 hidden flex-none text-gray-500 group-hover:text-flamingo-600 xl:block">2PM</time>
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-04">4</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-05">5</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-06">6</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-07">7</time>
+                                            <ol class="mt-2">
+                                                <li>
+                                                    <a href="#" class="group flex">
+                                                        <p
+                                                            class="flex-auto truncate font-medium text-gray-900 group-hover:text-flamingo-600">
+                                                            Date night</p>
+                                                        <time datetime="2022-01-08T18:00"
+                                                            class="ml-3 hidden flex-none text-gray-500 group-hover:text-flamingo-600 xl:block">6PM</time>
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-08">8</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-09">9</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-10">10</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-11">11</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-12"
+                                                class="flex h-6 w-6 items-center justify-center rounded-full bg-flamingo-600 font-semibold text-white">12</time>
+                                            <ol class="mt-2">
+                                                <li>
+                                                    <a href="#" class="group flex">
+                                                        <p
+                                                            class="flex-auto truncate font-medium text-gray-900 group-hover:text-flamingo-600">
+                                                            Sam's birthday party</p>
+                                                        <time datetime="2022-01-25T14:00"
+                                                            class="ml-3 hidden flex-none text-gray-500 group-hover:text-flamingo-600 xl:block">2PM</time>
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-13">13</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-14">14</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-15">15</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-16">16</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-17">17</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-18">18</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-19">19</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-20">20</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-21">21</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-22">22</time>
+                                            <ol class="mt-2">
+                                                <li>
+                                                    <a href="#" class="group flex">
+                                                        <p
+                                                            class="flex-auto truncate font-medium text-gray-900 group-hover:text-flamingo-600">
+                                                            Maple syrup museum</p>
+                                                        <time datetime="2022-01-22T15:00"
+                                                            class="ml-3 hidden flex-none text-gray-500 group-hover:text-flamingo-600 xl:block">3PM</time>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="group flex">
+                                                        <p
+                                                            class="flex-auto truncate font-medium text-gray-900 group-hover:text-flamingo-600">
+                                                            Hockey game</p>
+                                                        <time datetime="2022-01-22T19:00"
+                                                            class="ml-3 hidden flex-none text-gray-500 group-hover:text-flamingo-600 xl:block">7PM</time>
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-23">23</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-24">24</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-25">25</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-26">26</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-27">27</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-28">28</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-29">29</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-30">30</time>
+                                        </div>
+                                        <div class="relative bg-white py-2 px-3">
+                                            <time datetime="2022-01-31">31</time>
+                                        </div>
+                                        <div class="relative bg-gray-50 py-2 px-3 text-gray-500">
+                                            <time datetime="2022-02-01">1</time>
+                                        </div>
+                                        <div class="relative bg-gray-50 py-2 px-3 text-gray-500">
+                                            <time datetime="2022-02-02">2</time>
+                                        </div>
+                                        <div class="relative bg-gray-50 py-2 px-3 text-gray-500">
+                                            <time datetime="2022-02-03">3</time>
+                                        </div>
+                                        <div class="relative bg-gray-50 py-2 px-3 text-gray-500">
+                                            <time datetime="2022-02-04">4</time>
+                                            <ol class="mt-2">
+                                                <li>
+                                                    <a href="#" class="group flex">
+                                                        <p
+                                                            class="flex-auto truncate font-medium text-gray-900 group-hover:text-flamingo-600">
+                                                            Cinema with friends</p>
+                                                        <time datetime="2022-02-04T21:00"
+                                                            class="ml-3 hidden flex-none text-gray-500 group-hover:text-flamingo-600 xl:block">9PM</time>
+                                                    </a>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                        <div class="relative bg-gray-50 py-2 px-3 text-gray-500">
+                                            <time datetime="2022-02-05">5</time>
+                                        </div>
+                                        <div class="relative bg-gray-50 py-2 px-3 text-gray-500">
+                                            <time datetime="2022-02-06">6</time>
+                                        </div>
+                                    </div>
+                                    <div class="isolate grid w-full grid-cols-7 grid-rows-6 gap-px lg:hidden">
+                                        <!--
+                                        Always include: "flex h-14 flex-col py-2 px-3 hover:bg-gray-100 focus:z-10"
+                                        Is current month, include: "bg-white"
+                                        Is not current month, include: "bg-gray-50"
+                                        Is selected or is today, include: "font-semibold"
+                                        Is selected, include: "text-white"
+                                        Is not selected and is today, include: "text-flamingo-600"
+                                        Is not selected and is current month, and is not today, include: "text-gray-900"
+                                        Is not selected, is not current month, and is not today: "text-gray-500"
+                                    -->
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-gray-50 py-2 px-3 text-gray-500 hover:bg-gray-100 focus:z-10">
+                                            <!--
+                                            Always include: "ml-auto"
+                                            Is selected, include: "flex h-6 w-6 items-center justify-center rounded-full"
+                                            Is selected and is today, include: "bg-flamingo-600"
+                                            Is selected and is not today, include: "bg-gray-900"
+                                        -->
+                                            <time datetime="2021-12-27" class="ml-auto">27</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-gray-50 py-2 px-3 text-gray-500 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2021-12-28" class="ml-auto">28</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-gray-50 py-2 px-3 text-gray-500 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2021-12-29" class="ml-auto">29</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-gray-50 py-2 px-3 text-gray-500 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2021-12-30" class="ml-auto">30</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-gray-50 py-2 px-3 text-gray-500 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2021-12-31" class="ml-auto">31</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-01" class="ml-auto">1</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-02" class="ml-auto">2</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-03" class="ml-auto">3</time>
+                                            <span class="sr-only">2 events</span>
+                                            <span class="-mx-0.5 mt-auto flex flex-wrap-reverse">
+                                                <span class="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400"></span>
+                                                <span class="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400"></span>
+                                            </span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-04" class="ml-auto">4</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-05" class="ml-auto">5</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-06" class="ml-auto">6</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-07" class="ml-auto">7</time>
+                                            <span class="sr-only">1 event</span>
+                                            <span class="-mx-0.5 mt-auto flex flex-wrap-reverse">
+                                                <span class="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400"></span>
+                                            </span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-08" class="ml-auto">8</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-09" class="ml-auto">9</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-10" class="ml-auto">10</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-11" class="ml-auto">11</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 font-semibold text-flamingo-600 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-12" class="ml-auto">12</time>
+                                            <span class="sr-only">1 event</span>
+                                            <span class="-mx-0.5 mt-auto flex flex-wrap-reverse">
+                                                <span class="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400"></span>
+                                            </span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-13" class="ml-auto">13</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-14" class="ml-auto">14</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-15" class="ml-auto">15</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-16" class="ml-auto">16</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-17" class="ml-auto">17</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-18" class="ml-auto">18</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-19" class="ml-auto">19</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-20" class="ml-auto">20</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-21" class="ml-auto">21</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 font-semibold text-white hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-22"
+                                                class="ml-auto flex h-6 w-6 items-center justify-center rounded-full bg-gray-900">22</time>
+                                            <span class="sr-only">2 events</span>
+                                            <span class="-mx-0.5 mt-auto flex flex-wrap-reverse">
+                                                <span class="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400"></span>
+                                                <span class="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400"></span>
+                                            </span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-23" class="ml-auto">23</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-24" class="ml-auto">24</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-25" class="ml-auto">25</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-26" class="ml-auto">26</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-27" class="ml-auto">27</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-28" class="ml-auto">28</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-29" class="ml-auto">29</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-30" class="ml-auto">30</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-white py-2 px-3 text-gray-900 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-01-31" class="ml-auto">31</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-gray-50 py-2 px-3 text-gray-500 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-02-01" class="ml-auto">1</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-gray-50 py-2 px-3 text-gray-500 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-02-02" class="ml-auto">2</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-gray-50 py-2 px-3 text-gray-500 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-02-03" class="ml-auto">3</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-gray-50 py-2 px-3 text-gray-500 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-02-04" class="ml-auto">4</time>
+                                            <span class="sr-only">1 event</span>
+                                            <span class="-mx-0.5 mt-auto flex flex-wrap-reverse">
+                                                <span class="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400"></span>
+                                            </span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-gray-50 py-2 px-3 text-gray-500 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-02-05" class="ml-auto">5</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                        <button type="button"
+                                            class="flex h-14 flex-col bg-gray-50 py-2 px-3 text-gray-500 hover:bg-gray-100 focus:z-10">
+                                            <time datetime="2022-02-06" class="ml-auto">6</time>
+                                            <span class="sr-only">0 events</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-4 lg:hidden">
+                            <ol
+                                class="divide-y divide-gray-100 overflow-hidden rounded-lg bg-white text-sm shadow-sm border border-gray-200">
+
+                                <li class="group flex p-4 pr-6 focus-within:bg-gray-50 hover:bg-gray-50">
+                                    <div class="flex-auto">
+                                        <p class="font-semibold text-gray-900">&lt;기생충&gt;팀 (봉준호 연출)</p>
+                                        <time datetime="2022-01-15T09:00" class="mt-2 flex items-center text-gray-700">
+                                            <svg class="mr-2 h-5 w-5 text-gray-400"
+                                                x-description="Heroicon name: solid/clock"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                            3PM
+                                        </time>
+                                    </div>
+                                    <a href="#"
+                                        class="ml-6 flex-none self-center rounded-md border border-gray-300 bg-white py-2 px-3 font-semibold text-gray-700 opacity-0 shadow-sm hover:bg-gray-50 focus:opacity-100 group-hover:opacity-100">수정<span
+                                            class="sr-only">, &lt;기생충&gt;팀 (봉준호 연출)</span></a>
+                                </li>
+
+                                <li class="group flex p-4 pr-6 focus-within:bg-gray-50 hover:bg-gray-50">
+                                    <div class="flex-auto">
+                                        <p class="font-semibold text-gray-900">&lt;헤어질 결심&gt;팀 (박찬욱 연출)</p>
+                                        <time datetime="2022-01-22T19:00" class="mt-2 flex items-center text-gray-700">
+                                            <svg class="mr-2 h-5 w-5 text-gray-400"
+                                                x-description="Heroicon name: solid/clock"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                fill="currentColor" aria-hidden="true">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                            7PM
+                                        </time>
+                                    </div>
+                                    <a href="#"
+                                        class="ml-6 flex-none self-center rounded-md border border-gray-300 bg-white py-2 px-3 font-semibold text-gray-700 opacity-0 shadow-sm hover:bg-gray-50 focus:opacity-100 group-hover:opacity-100">수정<span
+                                            class="sr-only">, &lt;헤어질 결심&gt;팀 (박찬욱 연출)</span></a>
+                                </li>
+
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+{% endblock %}

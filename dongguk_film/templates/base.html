@@ -6,6 +6,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="application-name" content="디닷에프">
+    <meta name="theme-color" content="#F15922">
+    <meta name="keywords" content="디닷에프,동국대학교,영화영상학과">
+    <meta name="format-detection" content="telephone=no">
+    <meta property="og:locale" content="ko-KR">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{% static 'd_dot_f_og.png' %}">
+    <meta property="og:image:secure_url" content="{% static 'd_dot_f_og.png' %}">
+    <meta property="og:site_name" content="디닷에프">
     {% block meta %}{% endblock %}
     <!-- base CSS -->
     <link href="{% static 'base.css' %}" rel="stylesheet">
@@ -42,7 +51,6 @@
     <link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon/favicon-96x96.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'favicon/manifest.json' %}">
-    <meta name="theme-color" content="#F15922">
     <title>{% block title %}{% endblock %}</title>
 </head>
 

@@ -1,44 +1,22 @@
 {% load static %}
-<header>
-    <!-- <div id="header_banner" class="bg-flamingo-600">
-        <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between flex-wrap">
-                <div class="w-0 flex-1 flex items-center">
-                    <span class="flex p-2 rounded-lg bg-flamingo-800">
-                        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
-                        </svg>
-                    </span>
-                    <p class="ml-3 font-normal text-white truncate">
-                        <span class="md:hidden"><b>디닷에프</b>가 드디어 오픈했어요!🎉</span>
-                        <span class="hidden md:inline">동국대학교 영화영상학과 전용 웹서비스 <b>디닷에프</b>가 드디어 오픈했어요!🎉</span>
-                    </p>
-                </div>
-                <div class="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
-                    <a href="#"
-                        class="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-bold text-flamingo-600 bg-white hover:bg-flamingo-50">
-                        더 보기</a>
-                </div>
-                <div class="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
-                    <button type="button"
-                        class="-mr-1 flex p-2 rounded-md hover:bg-flamingo-500 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2"
-                        onclick="dismissHeaderBanner()">
-                        <span class="sr-only">지우기</span>
-                        <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div> -->
+<header class="relative
+    {% if not '/' == request.get_full_path %}
+    pb-24 bg-flamingo-800 sm:pb-32
+    {% else %}
+    bg-white sm:border-b-2 sm:border-gray-200/75
+    {% endif %}
+    ">
+    {% if not '/' == request.get_full_path %}
+    <div class="absolute inset-0">
+        <img class="w-full h-full object-cover" src="https://source.unsplash.com/random/1280×600/?camera-equipment"
+            alt="">
+        <div class="absolute inset-0 bg-flamingo-800 mix-blend-multiply" aria-hidden="true"></div>
+    </div>
+    {% endif %}
 
-    <div class="relative bg-white sm:border-b-2 sm:border-gray-200/75" x-data="Components.popover({ open: false, focus: true })"
-        x-init="init()" @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+    <div class="relative" x-data="Components.popover({ open: false, focus: true })" x-init="init()"
+        @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
                 <div class="flex justify-start lg:w-0 lg:flex-1">
                     <a href="{% url 'home:home' %}">
@@ -65,7 +43,12 @@
                 </div>
                 <div class="-mr-2 -my-2 md:hidden">
                     <button type="button"
-                        class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-flamingo-500"
+                        class="rounded-md p-2 inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-flamingo-500 text-gray-400 hover:bg-opacity-100
+                            {% if not '/' == request.get_full_path %}
+                            hover:text-gray-300
+                            {% else %}
+                            hover:text-gray-500
+                            {% endif %}"
                         @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="false"
                         :aria-expanded="open.toString()">
                         <span class="sr-only">메뉴 열기</span>
@@ -79,10 +62,19 @@
                 <nav class="hidden md:flex space-x-10" x-data="Components.popoverGroup()" x-init="init()">
                     <div class="relative" x-data="Components.popover({ open: false, focus: false })" x-init="init()"
                         @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
-                        <button type="button" x-state:on="Item active" x-state:off="Item inactive"
-                            class="group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-flamingo-500 text-gray-500"
-                            :class="{ 'text-gray-900': open, 'text-gray-500': !(open) }" @click="toggle"
-                            @mousedown="if (open) $event.preventDefault()" aria-expanded="false"
+                        <button type="button" x-state:on="Item active" x-state:off="Item inactive" class="group rounded-md inline-flex items-center text-base font-medium
+                                {% if not '/' == request.get_full_path %}
+                                text-white hover:text-flamingo-200
+                                {% else %}
+                                text-gray-500 hover:text-gray-900
+                                {% endif %}
+                                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-flamingo-500" :class="{
+                                {% if not '/' == request.get_full_path %}
+                                'text-flamingo-200': open, 'text-white': !(open)
+                                {% else %}
+                                'text-gray-900': open, 'text-gray-500': !(open)
+                                {% endif %}
+                                }" @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="false"
                             :aria-expanded="open.toString()">
                             <span>시설이용</span>
                         </button>
@@ -93,11 +85,12 @@
                             x-transition:leave-start="opacity-100 translate-y-0"
                             x-transition:leave-end="opacity-0 translate-y-1"
                             x-description="'시설이용' flyout menu, show/hide based on flyout menu state."
-                            class="absolute z-10 -ml-4 mt-3 transform px-2 w-96 max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
+                            class="absolute z-20 -ml-4 mt-3 transform px-2 w-96 max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
                             x-ref="panel" @click.away="open = false" style="display: none;">
                             <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                                 <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
-                                    <a href="#" class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
+                                    <a href="{% url 'facility:equipment' %}"
+                                        class="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50">
                                         <svg class="flex-shrink-0 h-6 w-6 text-flamingo-600"
                                             x-description="Heroicon name: outline/camera"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -112,7 +105,7 @@
                                                 기자재
                                             </p>
                                             <p class="mt-1 text-sm text-gray-500">
-                                                촬영 기자재 및 보관실 대여
+                                                카메라, 조명기, 녹음기 등 기자재 대여
                                             </p>
                                         </div>
                                     </a>
@@ -142,10 +135,10 @@
                                         </svg>
                                         <div class="ml-4">
                                             <p class="text-base font-medium text-gray-900">
-                                                보관함
+                                                보관 공간
                                             </p>
                                             <p class="mt-1 text-sm text-gray-500">
-                                                사물함 및 소품보관함 대여
+                                                기재보관실, 소품보관함, 사물함 대여
                                             </p>
                                         </div>
                                     </a>
@@ -172,10 +165,19 @@
                     </div>
                     <div class="relative" x-data="Components.popover({ open: false, focus: false })" x-init="init()"
                         @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
-                        <button type="button" x-state:on="Item active" x-state:off="Item inactive"
-                            class="group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-flamingo-500 text-gray-500"
-                            :class="{ 'text-gray-900': open, 'text-gray-500': !(open) }" @click="toggle"
-                            @mousedown="if (open) $event.preventDefault()" aria-expanded="false"
+                        <button type="button" x-state:on="Item active" x-state:off="Item inactive" class="group rounded-md inline-flex items-center text-base font-medium
+                            {% if not '/' == request.get_full_path %}
+                            text-white hover:text-flamingo-200
+                            {% else %}
+                            text-gray-500 hover:text-gray-900
+                            {% endif %}
+                            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-flamingo-500" :class="{
+                            {% if not '/' == request.get_full_path %}
+                            'text-flamingo-200': open, 'text-white': !(open)
+                            {% else %}
+                            'text-gray-900': open, 'text-gray-500': !(open)
+                            {% endif %}
+                            }" @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="false"
                             :aria-expanded="open.toString()">
                             <span>전자문서</span>
                         </button>
@@ -186,7 +188,7 @@
                             x-transition:leave-start="opacity-100 translate-y-0"
                             x-transition:leave-end="opacity-0 translate-y-1"
                             x-description="'전자문서' flyout menu, show/hide based on flyout menu state."
-                            class="absolute z-10 -ml-4 mt-3 transform px-2 w-96 max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
+                            class="absolute z-20 -ml-4 mt-3 transform px-2 w-96 max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
                             x-ref="panel" @click.away="open = false" style="display: none;">
                             <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                                 <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
@@ -228,10 +230,19 @@
                     </div>
                     <div class="relative" x-data="Components.popover({ open: false, focus: false })" x-init="init()"
                         @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
-                        <button type="button" x-state:on="Item active" x-state:off="Item inactive"
-                            class="group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-flamingo-500 text-gray-500"
-                            :class="{ 'text-gray-900': open, 'text-gray-500': !(open) }" @click="toggle"
-                            @mousedown="if (open) $event.preventDefault()" aria-expanded="false"
+                        <button type="button" x-state:on="Item active" x-state:off="Item inactive" class="group rounded-md inline-flex items-center text-base font-medium
+                            {% if not '/' == request.get_full_path %}
+                            text-white hover:text-flamingo-200
+                            {% else %}
+                            text-gray-500 hover:text-gray-900
+                            {% endif %}
+                            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-flamingo-500" :class="{
+                            {% if not '/' == request.get_full_path %}
+                            'text-flamingo-200': open, 'text-white': !(open)
+                            {% else %}
+                            'text-gray-900': open, 'text-gray-500': !(open)
+                            {% endif %}
+                            }" @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="false"
                             :aria-expanded="open.toString()">
                             <span>편의기능</span>
                         </button>
@@ -242,7 +253,7 @@
                             x-transition:leave-start="opacity-100 translate-y-0"
                             x-transition:leave-end="opacity-0 translate-y-1"
                             x-description="'편의기능' flyout menu, show/hide based on flyout menu state."
-                            class="absolute z-10 -ml-4 mt-3 transform px-2 w-96 max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
+                            class="absolute z-20 -ml-4 mt-3 transform px-2 w-96 max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
                             x-ref="panel" @click.away="open = false" style="display: none;">
                             <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                                 <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
@@ -284,10 +295,19 @@
                     </div>
                     <div class="relative" x-data="Components.popover({ open: false, focus: false })" x-init="init()"
                         @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
-                        <button type="button" x-state:on="Item active" x-state:off="Item inactive"
-                            class="group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-flamingo-500 text-gray-500"
-                            :class="{ 'text-gray-900': open, 'text-gray-500': !(open) }" @click="toggle"
-                            @mousedown="if (open) $event.preventDefault()" aria-expanded="false"
+                        <button type="button" x-state:on="Item active" x-state:off="Item inactive" class="group rounded-md inline-flex items-center text-base font-medium
+                            {% if not '/' == request.get_full_path %}
+                            text-white hover:text-flamingo-200
+                            {% else %}
+                            text-gray-500 hover:text-gray-900
+                            {% endif %}
+                            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-flamingo-500" :class="{
+                            {% if not '/' == request.get_full_path %}
+                            'text-flamingo-200': open, 'text-white': !(open)
+                            {% else %}
+                            'text-gray-900': open, 'text-gray-500': !(open)
+                            {% endif %}
+                            }" @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="false"
                             :aria-expanded="open.toString()">
                             <span>공지사항</span>
                         </button>
@@ -298,7 +318,7 @@
                             x-transition:leave-start="opacity-100 translate-y-0"
                             x-transition:leave-end="opacity-0 translate-y-1"
                             x-description="'공지사항' flyout menu, show/hide based on flyout menu state."
-                            class="absolute z-10 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-96 max-w-md sm:px-0"
+                            class="absolute z-20 left-1/2 transform -translate-x-1/2 mt-3 px-2 w-96 max-w-md sm:px-0"
                             x-ref="panel" @click.away="open = false" style="display: none;">
                             <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
                                 <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
@@ -353,11 +373,22 @@
                     </div>
                 </nav>
                 <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                    <a href="#" class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+                    <a href="#" class="whitespace-nowrap text-base font-medium
+                        {% if not '/' == request.get_full_path %}
+                        text-white hover:text-flamingo-200
+                        {% else %}
+                        text-gray-500 hover:text-gray-900
+                        {% endif %}
+                        ">
                         회원가입
                     </a>
-                    <a href="#"
-                        class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-flamingo-600 hover:bg-flamingo-700">
+                    <a href="#" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white
+                        {% if not '/' == request.get_full_path %}
+                        bg-white bg-opacity-10 hover:bg-opacity-20
+                        {% else %}
+                        bg-flamingo-600 hover:bg-flamingo-700
+                        {% endif %}
+                        ">
                         로그인
                     </a>
                 </div>
@@ -367,7 +398,7 @@
             x-transition:enter-end="opacity-100 scale-100" x-transition:leave="duration-100 ease-in"
             x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
             x-description="Mobile menu, show/hide based on mobile menu state."
-            class="absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden" x-ref="panel"
+            class="absolute z-20 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden" x-ref="panel"
             @click.away="open = false" style="display: none;">
             <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
                 <div class="pt-5 pb-6 px-5">
@@ -382,6 +413,7 @@
                                     .st0 {
                                         fill: #A39890;
                                     }
+
                                     .st1 {
                                         fill: #F15922;
                                     }
@@ -410,7 +442,8 @@
                     </div>
                     <div class="mt-6">
                         <nav class="grid gap-y-8">
-                            <a href="#" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
+                            <a href="{% url 'facility:equipment' %}"
+                                class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
                                 <svg class="flex-shrink-0 h-6 w-6 text-flamingo-600"
                                     x-description="Heroicon name: outline/camera" xmlns="http://www.w3.org/2000/svg"
                                     fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
@@ -444,7 +477,7 @@
                                         d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
                                 </svg>
                                 <span class="ml-3 text-base font-medium text-gray-900">
-                                    보관함
+                                    보관 공간
                                 </span>
                             </a>
                             <a href="#" class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50">
@@ -515,6 +548,13 @@
             </div>
         </div>
     </div>
+
+    {% if not '/' == request.get_full_path %}
+    <div class="relative mt-16 max-w-7xl mx-auto px-4 sm:mt-24 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">기자재</h1>
+        <p class="mt-6 text-xl text-flamingo-200 max-w-3xl">카메라, 조명기, 녹음기 등 기자재 대여</p>
+    </div>
+    {% endif %}
 </header>
 
 <script src="{% static 'header.js' %}"></script>
