@@ -8,8 +8,7 @@
     ">
     {% if not '/' == request.get_full_path %}
     <div class="absolute inset-0">
-        <img class="w-full h-full object-cover" src="https://source.unsplash.com/random/1280×600/?camera-equipment"
-            alt="">
+        <img class="w-full h-full object-cover" src="https://source.unsplash.com/random/1280×600/?camera-equipment">
         <div class="absolute inset-0 bg-flamingo-800 mix-blend-multiply" aria-hidden="true"></div>
     </div>
     {% endif %}
@@ -28,6 +27,7 @@
                                 .st0 {
                                     fill: #A39890;
                                 }
+
                                 .st1 {
                                     fill: #F15922;
                                 }
@@ -42,15 +42,13 @@
                     </a>
                 </div>
                 <div class="-mr-2 -my-2 md:hidden">
-                    <button type="button"
-                        class="rounded-md p-2 inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-flamingo-500 text-gray-400 hover:bg-opacity-100
+                    <button type="button" class="rounded-md p-2 inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-flamingo-500 text-gray-400 hover:bg-opacity-100
                             {% if not '/' == request.get_full_path %}
                             hover:text-gray-300
                             {% else %}
                             hover:text-gray-500
-                            {% endif %}"
-                        @click="toggle" @mousedown="if (open) $event.preventDefault()" aria-expanded="false"
-                        :aria-expanded="open.toString()">
+                            {% endif %}" @click="toggle" @mousedown="if (open) $event.preventDefault()"
+                        aria-expanded="false" :aria-expanded="open.toString()">
                         <span class="sr-only">메뉴 열기</span>
                         <svg class="h-6 w-6" x-description="Heroicon name: outline/menu"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
@@ -64,11 +62,11 @@
                         @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
                         <button type="button" x-state:on="Item active" x-state:off="Item inactive" class="group rounded-md inline-flex items-center text-base font-medium
                                 {% if not '/' == request.get_full_path %}
-                                text-white hover:text-flamingo-200
+                                text-white hover:text-flamingo-200 focus:ring-offset-flamingo-800
                                 {% else %}
                                 text-gray-500 hover:text-gray-900
                                 {% endif %}
-                                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-flamingo-500" :class="{
+                                focus:ring-2 focus:ring-offset-2 focus:ring-flamingo-500" :class="{
                                 {% if not '/' == request.get_full_path %}
                                 'text-flamingo-200': open, 'text-white': !(open)
                                 {% else %}
@@ -167,7 +165,7 @@
                         @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
                         <button type="button" x-state:on="Item active" x-state:off="Item inactive" class="group rounded-md inline-flex items-center text-base font-medium
                             {% if not '/' == request.get_full_path %}
-                            text-white hover:text-flamingo-200
+                            text-white hover:text-flamingo-200 focus:ring-offset-flamingo-800
                             {% else %}
                             text-gray-500 hover:text-gray-900
                             {% endif %}
@@ -232,7 +230,7 @@
                         @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
                         <button type="button" x-state:on="Item active" x-state:off="Item inactive" class="group rounded-md inline-flex items-center text-base font-medium
                             {% if not '/' == request.get_full_path %}
-                            text-white hover:text-flamingo-200
+                            text-white hover:text-flamingo-200 focus:ring-offset-flamingo-800
                             {% else %}
                             text-gray-500 hover:text-gray-900
                             {% endif %}
@@ -297,7 +295,7 @@
                         @keydown.escape="onEscape" @close-popover-group.window="onClosePopoverGroup">
                         <button type="button" x-state:on="Item active" x-state:off="Item inactive" class="group rounded-md inline-flex items-center text-base font-medium
                             {% if not '/' == request.get_full_path %}
-                            text-white hover:text-flamingo-200
+                            text-white hover:text-flamingo-200 focus:ring-offset-flamingo-800
                             {% else %}
                             text-gray-500 hover:text-gray-900
                             {% endif %}
@@ -373,16 +371,54 @@
                     </div>
                 </nav>
                 <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                    <a href="#" class="whitespace-nowrap text-base font-medium
-                        {% if not '/' == request.get_full_path %}
-                        text-white hover:text-flamingo-200
-                        {% else %}
-                        text-gray-500 hover:text-gray-900
-                        {% endif %}
-                        ">
-                        회원가입
-                    </a>
-                    <a href="#" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white
+                    {% if user.is_authenticated %}
+                    <div x-data="Components.menu({ open: false })" x-init="init()"
+                        @keydown.escape.stop="open = false; focusButton()" @click.away="onClickAway($event)"
+                        class="z-20 relative flex-shrink-0">
+                        <div>
+                            <button type="button" class="bg-flamingo-500 flex text-sm rounded-full text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-flamingo-500
+                                {% if not '/' == request.get_full_path %}
+                                focus:ring-offset-flamingo-800
+                                {% endif %}
+                                " id="user-menu-button" x-ref="button" @click="onButtonClick()"
+                                @keyup.space.prevent="onButtonEnter()" @keydown.enter.prevent="onButtonEnter()"
+                                aria-expanded="false" aria-haspopup="true" x-bind:aria-expanded="open.toString()"
+                                @keydown.arrow-up.prevent="onArrowUp()" @keydown.arrow-down.prevent="onArrowDown()">
+                                <span class="sr-only">Open user menu</span>
+                                <img class="h-8 w-8 rounded-full"
+                                    src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=256&amp;h=256&amp;q=80"
+                                    alt="">
+                            </button>
+                        </div>
+                        <div x-show="open" x-transition:enter="transition ease-out duration-100"
+                            x-transition:enter-start="transform opacity-0 scale-95"
+                            x-transition:enter-end="transform opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-75"
+                            x-transition:leave-start="transform opacity-100 scale-100"
+                            x-transition:leave-end="transform opacity-0 scale-95"
+                            class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            x-ref="menu-items" x-description="Dropdown menu, show/hide based on menu state."
+                            x-bind:aria-activedescendant="activeDescendant" role="menu" aria-orientation="vertical"
+                            aria-labelledby="user-menu-button" tabindex="-1" @keydown.arrow-up.prevent="onArrowUp()"
+                            @keydown.arrow-down.prevent="onArrowDown()" @keydown.tab="open = false"
+                            @keydown.enter.prevent="open = false; focusButton()"
+                            @keyup.space.prevent="open = false; focusButton()" style="display: none;">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" x-state:on="Active"
+                                x-state:off="Not Active" :class="{ 'bg-gray-100': activeIndex === 0 }" role="menuitem"
+                                tabindex="-1" id="user-menu-item-0" @mouseenter="activeIndex = 0"
+                                @mouseleave="activeIndex = -1" @click="open = false; focusButton()">Your Profile</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700"
+                                :class="{ 'bg-gray-100': activeIndex === 1 }" role="menuitem" tabindex="-1"
+                                id="user-menu-item-1" @mouseenter="activeIndex = 1" @mouseleave="activeIndex = -1"
+                                @click="open = false; focusButton()">Settings</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700"
+                                :class="{ 'bg-gray-100': activeIndex === 2 }" role="menuitem" tabindex="-1"
+                                id="user-menu-item-2" @mouseenter="activeIndex = 2" @mouseleave="activeIndex = -1"
+                                @click="open = false; focusButton()">Sign out</a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <a href="{% url 'account_login' %}" class="whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white
                         {% if not '/' == request.get_full_path %}
                         bg-white bg-opacity-20 hover:bg-opacity-10
                         {% else %}
@@ -391,6 +427,7 @@
                         ">
                         로그인
                     </a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -533,7 +570,7 @@
                         </a>
                     </div>
                     <div>
-                        <a href="#"
+                        <a href="{% url 'account_login' %}"
                             class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-flamingo-600 hover:bg-flamingo-700">
                             로그인
                         </a>

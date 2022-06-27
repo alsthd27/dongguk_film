@@ -62,8 +62,16 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
+    "users",
     "home",
     "facility",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
+    "allauth.socialaccount.providers.kakao",
+    "allauth.socialaccount.providers.naver",
 ]
 
 MIDDLEWARE = [
@@ -152,3 +160,53 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Django-allauth
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = "/"
+
+LOGOUT_REDIRECT_URL = "/"
+
+SESSION_COOKIE_AGE = 3600
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+SESSION_SAVE_EVERY_REQUEST = True
+
+SOCIALACCOUNT_FORMS = {
+    "signup": "users.forms.SocialSignupForm",
+}
+
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "PROCESS": "login",
+        "SCOPE": [
+            "profile",
+            "email",
+        ],
+        "AUTH_PARAMS": {
+            "access_type": "offline",
+            "prompt": "select_account",
+            # "hd": "dgu.ac.kr",
+        },
+    }
+}
+
+SOCIALACCOUNT_AUTO_SIGNUP = False
+
+SOCIALACCOUNT_EMAIL_REQUIRED = True
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+ACCOUNT_USERNAME_REQUIRED = False
+
+ACCOUNT_EMAIL_REQUIRED = True
+
+ACCOUNT_AUTHENTICATION_METHOD = "email"

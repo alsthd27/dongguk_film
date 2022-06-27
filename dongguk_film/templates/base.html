@@ -51,30 +51,40 @@
     <link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon/favicon-96x96.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'favicon/manifest.json' %}">
+    {% if 'login' in request.get_full_path %}
+    <title>로그인 - 디닷에프</title>
+    {% else %}
     <title>{% block title %}{% endblock %}</title>
+    {% endif %}
 </head>
 
 <body class="antialiased font-pretendard bg-gray-100 overflow-auto">
     <div class="flex flex-col h-screen justify-between">
+        {% if not 'accounts' in request.get_full_path %}
         <!-- header -->
         <div>
             {% include "shared/_header.html" %}
         </div>
+        {% endif %}
+
         <!-- content -->
         <div class="mb-auto">
             {% block body %}{% endblock %}
         </div>
+
+        {% if not 'accounts' in request.get_full_path %}
         <!-- footer -->
         <div>
             {% include "shared/_footer.html" %}
         </div>
+        {% endif %}
     </div>
 
     <!-- MS Internet Explorer not supported -->
     <script type="text/javascript">
         (function msIeAlert() {
             let agent = navigator.userAgent.toLowerCase();
-            console.log((agent.indexOf("trident") || agent.indexOf("msie")) !== -1)
+            // console.log((agent.indexOf("trident") || agent.indexOf("msie")) !== -1)
             if ((agent.indexOf("trident") || agent.indexOf("msie")) !== -1) {
                 alert("디닷에프는 MS Internet Explorer를 지원하지 않습니다.\n번거로우시겠지만 디닷에프에 최적화된 브라우저로 이용 부탁드립니다. 🙏\n\n권장 브라우저: Google Chrome, MS Edge, Naver Whale")
                 document.body.setAttribute("style", "position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);")
