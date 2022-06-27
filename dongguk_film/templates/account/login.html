@@ -37,7 +37,7 @@
                     <div>
                         <a href="{% provider_login_url 'google' process=process scope=scope auth_params=auth_params %}"
                             class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
-                            onmouseover="logoGoogleOver()" onmouseout="logoGoogleOut()">
+                            onmouseover="logoGoogleOver()" onmouseout="logoGoogleOut()" id="login_google">
                             <svg class="w-5 h-5" viewBox="0 0 43 44" aria-hidden="true" id="logo_google_color">
                                 <defs>
                                     <style>
@@ -160,4 +160,17 @@
 
 <script src="{% static 'random-string.js' %}"></script>
 <script src="{% static 'logo-google.js' %}"></script>
+<!-- block In-App Browser -->
+<script type="text/javascript">
+    login_google.addEventListener("mousedown", function () {
+        let agent = navigator.userAgent.toLowerCase();
+        if ((agent.indexOf("kakaotalk")) !== -1) {
+            alert("앗, 카카오톡을 통해 들어오셨군요!\nGoogle 보안 정책에 의해 카카오톡 인앱 브라우저에서는 Google 계정 로그인이 불가해요. 😭\n번거로우시겠지만 Chrome이나 Safari를 통해 이용해주세요! 🙏");
+        }
+        console.log((agent.indexOf("naver")) !== -1)
+        if ((agent.indexOf("naver")) !== -1) {
+            alert("앗, 네이버앱을 통해 들어오셨군요!\nGoogle 보안 정책에 의해 네이버앱에서는 Google 계정 로그인이 불가해요. 😭\n번거로우시겠지만 Chrome이나 Safari를 통해 이용해주세요! 🙏");
+        }
+    })
+</script>
 {% endblock %}
