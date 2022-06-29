@@ -55,6 +55,15 @@
                                 </li>
                             </ul>
                             <p>위 개인정보 수집 및 이용에 대한 동의를 거부할 수 있으며 동의 거부 시 서비스 이용이 제한될 수 있습니다.</p>
+                            <div class="relative flex items-start place-content-end">
+                                <div class="mr-3 text-sm">
+                                    <label for="agree" class="font-medium text-gray-600">개인정보 수집 및 이용에 동의합니다.</label>
+                                </div>
+                                <div class="flex items-center h-5">
+                                    <input id="agree" name="agree" type="checkbox"
+                                        class="focus:ring-flamingo-500 h-4 w-4 text-flamingo-600 border-gray-300 rounded">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,7 +97,7 @@
                             <input type="text" name="student_id"
                                 class="focus:ring-flamingo-500 focus:border-flamingo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
                                 placeholder="{% now 'Y' %}113000" minlength="10" maxlength="10" required
-                                id="id_student_id" oninput="onlyNumber(event)">
+                                id="id_student_id" onkeypress="onlyNumber(event)">
                         </div>
                     </div>
                     <div>
