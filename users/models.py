@@ -14,7 +14,7 @@ class Profile(models.Model):
 class Vcode(models.Model):
     phone = models.CharField(max_length=13, null=True, blank=True)
     email = models.CharField(max_length=20, null=True, blank=True)
-    v_code = models.CharField(max_length=10, null=False, blank=False)
+    vcode = models.CharField(max_length=10, null=False, blank=False)
     will_expire_on = models.DateTimeField(null=True, blank=True)
 
     class Meta:

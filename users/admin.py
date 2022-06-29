@@ -23,18 +23,18 @@ class VcodeAdmin(admin.ModelAdmin):
     list_display = (
         "phone",
         "email",
-        "v_code",
+        "vcode",
         "will_expire_on",
     )
     list_display_links = (
         "phone",
         "email",
-        "v_code",
+        "vcode",
         "will_expire_on",
     )
     search_fields = (
         "phone",
         "email",
-        "v_code",
+        "vcode",
         "will_expire_on",
     )

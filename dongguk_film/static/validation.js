@@ -1,4 +1,4 @@
-id_phone.addEventListener("keyup", (e) => {
+id_phone.addEventListener("keyup", () => {
     let foo = id_phone.value.replace(/[^0-9]/g, "").replace(/(^0[0-9]{2})([0-9]+)?([0-9]{4})$/, "$1-$2-$3").replace("--", "-");
     id_phone.value = foo;
 });

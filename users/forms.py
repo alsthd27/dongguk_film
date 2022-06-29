@@ -26,7 +26,7 @@ class SocialSignupForm(SignupForm):
                 "type": "text",
                 "class": "focus:ring-flamingo-500 focus:border-flamingo-500 relative block w-full rounded-none rounded-l-md bg-transparent focus:z-10 sm:text-sm border-gray-300",
                 "placeholder": "홍",
-                "onkeypress": "onlyHangul(event)",
+                "oninput": "onlyHangul(event)",
             }
         ),
     )
@@ -38,7 +38,7 @@ class SocialSignupForm(SignupForm):
                 "type": "text",
                 "class": "focus:ring-flamingo-500 focus:border-flamingo-500 relative block w-full rounded-none rounded-r-md bg-transparent focus:z-10 sm:text-sm border-gray-300",
                 "placeholder": "길동",
-                "onkeypress": "onlyHangul(event)",
+                "oninput": "onlyHangul(event)",
             }
         ),
     )
@@ -51,7 +51,7 @@ class SocialSignupForm(SignupForm):
                 "type": "tel",
                 "class": "focus:ring-flamingo-500 focus:border-flamingo-500 block w-full rounded-none rounded-l-md pl-10 sm:text-sm border-gray-300",
                 "placeholder": "010-0000-0000",
-                "onkeypress": "onlyNumber(event)",
+                "oninput": "onlyNumber(event)",
             }
         ),
     )
@@ -64,7 +64,7 @@ class SocialSignupForm(SignupForm):
                 "type": "text",
                 "class": "focus:ring-flamingo-500 focus:border-flamingo-500 block w-full rounded-none rounded-l-md pl-10 sm:text-sm border-gray-300",
                 "placeholder": "000000",
-                "onkeypress": "onlyNumber(event)",
+                "oninput": "onlyNumber(event)",
             }
         ),
     )
