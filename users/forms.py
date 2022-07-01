@@ -32,7 +32,7 @@ class SocialSignupForm(SignupForm):
     )
     first_name = forms.CharField(
         max_length=10,
-        label="이름",
+        label="명",
         widget=forms.TextInput(
             attrs={
                 "type": "text",
