@@ -126,190 +126,190 @@
                             <legend class="sr-only">
                                 기자재 용도
                             </legend>
-                            <div class="relative shadow-sm bg-white rounded-md -space-y-px">
+                            <div class="relative shadow bg-white rounded-md -space-y-px">
                                 <label x-radio-group-option=""
-                                    class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none border-gray-200"
-                                    x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
-                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '졸업영화'), 'border-gray-200': !(value === '졸업영화') }">
+                                    class="rounded-tl-md rounded-tr-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none border-transparent border-b-gray-200"
+                                    x-description="Checked: bg-flamingo-50 border-flamingo-200 z-10, Not Checked: border-transparent border-b-gray-200"
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '졸업영화'), 'border-transparent border-b-gray-200': !(value === '졸업영화') }">
                                     <span class="flex items-center text-sm">
                                         <input type="radio" x-model="value" name="pricing-plan" value="졸업영화"
                                             class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
                                             aria-labelledby="pricing-plans-0-label"
                                             aria-describedby="pricing-plans-0-description-0 pricing-plans-0-description-1">
                                         <span id="pricing-plans-0-label" class="ml-3 font-semibold text-gray-900"
-                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            x-description="Checked: text-flamingo-900, Not Checked: text-gray-900"
                                             :class="{ 'text-flamingo-900': (value === '졸업영화'), 'text-gray-900': !(value === '졸업영화') }">졸업영화</span>
                                     </span>
                                     <span id="pricing-plans-0-description-0"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
                                         <span class="font-medium text-gray-900"
-                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            x-description="Checked: text-flamingo-900, Not Checked: text-gray-900"
                                             :class="{ 'text-flamingo-900': (value === '졸업영화'), 'text-gray-900': !(value === '졸업영화') }">최대
                                             8일</span>
                                     </span>
                                     <span id="pricing-plans-0-description-1"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-gray-500"
-                                        x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
+                                        x-description="Checked: text-flamingo-700, Not Checked: text-gray-500"
                                         :class="{ 'text-flamingo-700': (value === '졸업영화'), 'text-gray-500': !(value === '졸업영화') }">최대
                                         18일 전 ~ 최소 3일 전 예약 가능</span>
                                 </label>
                                 <label x-radio-group-option=""
                                     class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none bg-flamingo-50 border-flamingo-200 z-10"
-                                    x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
-                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '캡스톤디자인'), 'border-gray-200': !(value === '캡스톤디자인') }">
+                                    x-description="Checked: bg-flamingo-50 border-flamingo-200 z-10, Not Checked: border-transparent border-b-gray-200"
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '캡스톤디자인'), 'border-transparent border-b-gray-200': !(value === '캡스톤디자인') }">
                                     <span class="flex items-center text-sm">
                                         <input type="radio" x-model="value" name="pricing-plan" value="캡스톤디자인"
                                             class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
                                             aria-labelledby="pricing-plans-1-label"
                                             aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
                                         <span id="pricing-plans-1-label" class="ml-3 font-semibold text-flamingo-900"
-                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            x-description="Checked: text-flamingo-900, Not Checked: text-gray-900"
                                             :class="{ 'text-flamingo-900': (value === '캡스톤디자인'), 'text-gray-900': !(value === '캡스톤디자인') }">캡스톤디자인</span>
                                     </span>
                                     <span id="pricing-plans-1-description-0"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
                                         <span class="font-medium text-flamingo-900"
-                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            x-description="Checked: text-flamingo-900, Not Checked: text-gray-900"
                                             :class="{ 'text-flamingo-900': (value === '캡스톤디자인'), 'text-gray-900': !(value === '캡스톤디자인') }">최대
                                             7일</span>
                                     </span>
                                     <span id="pricing-plans-1-description-1"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-flamingo-700"
-                                        x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
+                                        x-description="Checked: text-flamingo-700, Not Checked: text-gray-500"
                                         :class="{ 'text-flamingo-700': (value === '캡스톤디자인'), 'text-gray-500': !(value === '캡스톤디자인') }">최대
                                         14일 전 ~ 최소 3일 전 예약 가능</span>
                                 </label>
                                 <label x-radio-group-option=""
                                     class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none bg-flamingo-50 border-flamingo-200 z-10"
-                                    x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
-                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '대학원 워크숍'), 'border-gray-200': !(value === '대학원 워크숍') }">
+                                    x-description="Checked: bg-flamingo-50 border-flamingo-200 z-10, Not Checked: border-transparent border-b-gray-200"
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '대학원 워크숍'), 'border-transparent border-b-gray-200': !(value === '대학원 워크숍') }">
                                     <span class="flex items-center text-sm">
                                         <input type="radio" x-model="value" name="pricing-plan" value="대학원 워크숍"
                                             class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
                                             aria-labelledby="pricing-plans-1-label"
                                             aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
                                         <span id="pricing-plans-1-label" class="ml-3 font-semibold text-flamingo-900"
-                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            x-description="Checked: text-flamingo-900, Not Checked: text-gray-900"
                                             :class="{ 'text-flamingo-900': (value === '대학원 워크숍'), 'text-gray-900': !(value === '대학원 워크숍') }">대학원
                                             워크숍</span>
                                     </span>
                                     <span id="pricing-plans-1-description-0"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
                                         <span class="font-medium text-flamingo-900"
-                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            x-description="Checked: text-flamingo-900, Not Checked: text-gray-900"
                                             :class="{ 'text-flamingo-900': (value === '대학원 워크숍'), 'text-gray-900': !(value === '대학원 워크숍') }">최대
                                             7일</span>
                                     </span>
                                     <span id="pricing-plans-1-description-1"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-flamingo-700"
-                                        x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
+                                        x-description="Checked: text-flamingo-700, Not Checked: text-gray-500"
                                         :class="{ 'text-flamingo-700': (value === '대학원 워크숍'), 'text-gray-500': !(value === '대학원 워크숍') }">최대
                                         14일 전 ~ 최소 3일 전 예약 가능</span>
                                 </label>
                                 <label x-radio-group-option=""
                                     class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none bg-flamingo-50 border-flamingo-200 z-10"
-                                    x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
-                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '학부 워크숍'), 'border-gray-200': !(value === '학부 워크숍') }">
+                                    x-description="Checked: bg-flamingo-50 border-flamingo-200 z-10, Not Checked: border-transparent border-b-gray-200"
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '학부 워크숍'), 'border-transparent border-b-gray-200': !(value === '학부 워크숍') }">
                                     <span class="flex items-center text-sm">
                                         <input type="radio" x-model="value" name="pricing-plan" value="학부 워크숍"
                                             class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
                                             aria-labelledby="pricing-plans-1-label"
                                             aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
                                         <span id="pricing-plans-1-label" class="ml-3 font-semibold text-flamingo-900"
-                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            x-description="Checked: text-flamingo-900, Not Checked: text-gray-900"
                                             :class="{ 'text-flamingo-900': (value === '학부 워크숍'), 'text-gray-900': !(value === '학부 워크숍') }">학부
                                             워크숍</span>
                                     </span>
                                     <span id="pricing-plans-1-description-0"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
                                         <span class="font-medium text-flamingo-900"
-                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            x-description="Checked: text-flamingo-900, Not Checked: text-gray-900"
                                             :class="{ 'text-flamingo-900': (value === '학부 워크숍'), 'text-gray-900': !(value === '학부 워크숍') }">최대
                                             5일</span>
                                     </span>
                                     <span id="pricing-plans-1-description-1"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-flamingo-700"
-                                        x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
+                                        x-description="Checked: text-flamingo-700, Not Checked: text-gray-500"
                                         :class="{ 'text-flamingo-700': (value === '학부 워크숍'), 'text-gray-500': !(value === '학부 워크숍') }">최대
                                         10일 전 ~ 최소 3일 전 예약 가능</span>
                                 </label>
                                 <label x-radio-group-option=""
                                     class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none bg-flamingo-50 border-flamingo-200 z-10"
-                                    x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
-                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '촬영 전공수업'), 'border-gray-200': !(value === '촬영 전공수업') }">
+                                    x-description="Checked: bg-flamingo-50 border-flamingo-200 z-10, Not Checked: border-transparent border-b-gray-200"
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '촬영 전공수업'), 'border-transparent border-b-gray-200': !(value === '촬영 전공수업') }">
                                     <span class="flex items-center text-sm">
                                         <input type="radio" x-model="value" name="pricing-plan" value="촬영 전공수업"
                                             class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
                                             aria-labelledby="pricing-plans-1-label"
                                             aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
                                         <span id="pricing-plans-1-label" class="ml-3 font-semibold text-flamingo-900"
-                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            x-description="Checked: text-flamingo-900, Not Checked: text-gray-900"
                                             :class="{ 'text-flamingo-900': (value === '촬영 전공수업'), 'text-gray-900': !(value === '촬영 전공수업') }">촬영
                                             전공수업</span>
                                     </span>
                                     <span id="pricing-plans-1-description-0"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
                                         <span class="font-medium text-flamingo-900"
-                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            x-description="Checked: text-flamingo-900, Not Checked: text-gray-900"
                                             :class="{ 'text-flamingo-900': (value === '촬영 전공수업'), 'text-gray-900': !(value === '촬영 전공수업') }">최대
                                             5일</span>
                                     </span>
                                     <span id="pricing-plans-1-description-1"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-flamingo-700"
-                                        x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
+                                        x-description="Checked: text-flamingo-700, Not Checked: text-gray-500"
                                         :class="{ 'text-flamingo-700': (value === '촬영 전공수업'), 'text-gray-500': !(value === '촬영 전공수업') }">최대
                                         10일 전 ~ 최소 3일 전 예약 가능</span>
                                 </label>
                                 <label x-radio-group-option=""
                                     class="relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none bg-flamingo-50 border-flamingo-200 z-10"
-                                    x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
-                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '기타 전공수업'), 'border-gray-200': !(value === '기타 전공수업') }">
+                                    x-description="Checked: bg-flamingo-50 border-flamingo-200 z-10, Not Checked: border-transparent border-b-gray-200"
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '기타 전공수업'), 'border-transparent border-b-gray-200': !(value === '기타 전공수업') }">
                                     <span class="flex items-center text-sm">
                                         <input type="radio" x-model="value" name="pricing-plan" value="기타 전공수업"
                                             class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
                                             aria-labelledby="pricing-plans-1-label"
                                             aria-describedby="pricing-plans-1-description-0 pricing-plans-1-description-1">
                                         <span id="pricing-plans-1-label" class="ml-3 font-semibold text-flamingo-900"
-                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            x-description="Checked: text-flamingo-900, Not Checked: text-gray-900"
                                             :class="{ 'text-flamingo-900': (value === '기타 전공수업'), 'text-gray-900': !(value === '기타 전공수업') }">기타
                                             전공수업</span>
                                     </span>
                                     <span id="pricing-plans-1-description-0"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
                                         <span class="font-medium text-flamingo-900"
-                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            x-description="Checked: text-flamingo-900, Not Checked: text-gray-900"
                                             :class="{ 'text-flamingo-900': (value === '기타 전공수업'), 'text-gray-900': !(value === '기타 전공수업') }">최대
                                             2일</span>
                                     </span>
                                     <span id="pricing-plans-1-description-1"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-flamingo-700"
-                                        x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
+                                        x-description="Checked: text-flamingo-700, Not Checked: text-gray-500"
                                         :class="{ 'text-flamingo-700': (value === '기타 전공수업'), 'text-gray-500': !(value === '기타 전공수업') }">최대
                                         7일 전 ~ 최소 3일 전 예약 가능</span>
                                 </label>
                                 <label x-radio-group-option=""
-                                    class="rounded-bl-md rounded-br-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none border-gray-200"
-                                    x-description="Checked: &quot;bg-flamingo-50 border-flamingo-200 z-10&quot;, Not Checked: &quot;border-gray-200&quot;"
-                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '개인작품'), 'border-gray-200': !(value === '개인작품') }">
+                                    class="rounded-bl-md rounded-br-md relative border p-4 flex flex-col cursor-pointer md:pl-4 md:pr-6 md:grid md:grid-cols-3 focus:outline-none border-transparent"
+                                    x-description="Checked: bg-flamingo-50 border-flamingo-200 z-10, Not Checked: border-transparent"
+                                    :class="{ 'bg-flamingo-50 border-flamingo-200 z-10': (value === '개인작품'), 'border-transparent': !(value === '개인작품') }">
                                     <span class="flex items-center text-sm">
                                         <input type="radio" x-model="value" name="pricing-plan" value="개인작품"
                                             class="h-4 w-4 text-flamingo-600 border-gray-300 focus:ring-flamingo-500"
                                             aria-labelledby="pricing-plans-2-label"
                                             aria-describedby="pricing-plans-2-description-0 pricing-plans-2-description-1">
                                         <span id="pricing-plans-2-label" class="ml-3 font-semibold text-gray-900"
-                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            x-description="Checked: text-flamingo-900, Not Checked: text-gray-900"
                                             :class="{ 'text-flamingo-900': (value === '개인작품'), 'text-gray-900': !(value === '개인작품') }">개인작품</span>
                                     </span>
                                     <span id="pricing-plans-2-description-0"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-center">
                                         <span class="font-medium text-gray-900"
-                                            x-description="Checked: &quot;text-flamingo-900&quot;, Not Checked: &quot;text-gray-900&quot;"
+                                            x-description="Checked: text-flamingo-900, Not Checked: text-gray-900"
                                             :class="{ 'text-flamingo-900': (value === '개인작품'), 'text-gray-900': !(value === '개인작품') }">최대
                                             5일</span>
                                     </span>
                                     <span id="pricing-plans-2-description-1"
                                         class="ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right text-gray-500"
-                                        x-description="Checked: &quot;text-flamingo-700&quot;, Not Checked: &quot;text-gray-500&quot;"
+                                        x-description="Checked: text-flamingo-700, Not Checked: text-gray-500"
                                         :class="{ 'text-flamingo-700': (value === '개인작품'), 'text-gray-500': !(value === '개인작품') }">최대
                                         5일 전 ~ 최소 3일 전 예약 가능</span>
                                 </label>
@@ -321,7 +321,7 @@
         </div>
 
         <div class="hidden sm:block" aria-hidden="true">
-            <div class="py-5">
+            <div class="py-10">
                 <div class="border-t border-gray-200"></div>
             </div>
         </div>
@@ -341,9 +341,9 @@
                                 <time datetime="2022-01">2022년 1월</time>
                             </h1>
                             <div class="flex items-center">
-                                <div class="flex rounded-md shadow-sm items-stretch">
+                                <div class="flex rounded-md shadow items-stretch">
                                     <button type="button"
-                                        class="flex items-center justify-center rounded-l-md border border-r-0 border-gray-200 bg-white py-2 pl-3 pr-4 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50">
+                                        class="flex items-center justify-center rounded-l-md bg-white py-2 pl-3 pr-4 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50">
                                         <span class="sr-only">지난달</span>
                                         <svg class="h-5 w-5" x-description="Heroicon name: solid/chevron-left"
                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
@@ -354,9 +354,9 @@
                                         </svg>
                                     </button>
                                     <button type="button"
-                                        class="border-t border-b border-gray-200 bg-white px-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:relative block">오늘</button>
+                                        class="bg-white px-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:relative block">오늘</button>
                                     <button type="button"
-                                        class="flex items-center justify-center rounded-r-md border border-l-0 border-gray-200 bg-white py-2 pl-4 pr-3 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50">
+                                        class="flex items-center justify-center rounded-r-md bg-white py-2 pl-4 pr-3 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50">
                                         <span class="sr-only">다음달</span>
                                         <svg class="h-5 w-5" x-description="Heroicon name: solid/chevron-right"
                                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
@@ -369,7 +369,7 @@
                                 </div>
                             </div>
                         </header>
-                        <div class="w-full shadow-sm overflow-hidden rounded-md border border-gray-200">
+                        <div class="w-full shadow overflow-hidden rounded-md">
                             <div class="lg:flex lg:flex-auto lg:flex-col">
                                 <div
                                     class="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs font-semibold leading-6 text-gray-700 lg:flex-none">
@@ -845,7 +845,7 @@
                         </div>
                         <div class="pt-4">
                             <ol
-                                class="divide-y divide-gray-100 overflow-hidden rounded-lg bg-white text-sm shadow-sm border border-gray-200">
+                                class="divide-y divide-gray-100 overflow-hidden rounded-lg bg-white text-sm shadow">
 
                                 <li class="group flex p-4 pr-6 focus-within:bg-gray-50 hover:bg-gray-50">
                                     <div class="flex-auto">

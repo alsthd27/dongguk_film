@@ -41,11 +41,10 @@
     login_google.addEventListener("mousedown", () => {
         let agent = navigator.userAgent.toLowerCase();
         if ((agent.indexOf("kakaotalk")) !== -1) {
-            alert("앗, 카카오톡을 통해 들어오셨군요!\nGoogle 정책에 의해 카카오톡 인앱 브라우저에서는 'Google로 로그인'이 불가해요. 😭\n번거로우시겠지만 다음 중 편한 방법을 골라 이용해주세요! 🙏\n\n1) 'Google로 로그인' 대신 '카카오로 로그인' 또는 '네이버로 로그인'하기\n2) Chrome이나 Safari로 다시 들어오기");
+            alert("앗, 카카오톡을 통해 들어오셨군요!\nGoogle 정책에 의해 카카오톡 인앱 브라우저에서는 'Google로 로그인'이 불가해요. 😭\n번거로우시겠지만 다음 중 편한 방법을 골라 이용해주세요! 🙏\n\n1) '카카오로 로그인' 또는 '네이버로 로그인'하기\n2) Google Chrome이나 Apple Safari로 들어오기");
         }
-        console.log((agent.indexOf("naver")) !== -1)
         if ((agent.indexOf("naver")) !== -1) {
-            alert("앗, 네이버앱을 통해 들어오셨군요!\nGoogle 정책에 의해 네이버앱에서는 'Google로 로그인'이 불가해요. 😭\n번거로우시겠지만 다음 중 편한 방법을 골라 이용해주세요! 🙏\n\n1) 'Google로 로그인' 대신 '카카오로 로그인' 또는 '네이버로 로그인'하기\n2) Chrome이나 Safari로 다시 들어오기");
+            alert("앗, 네이버앱을 통해 들어오셨군요!\nGoogle 정책에 의해 네이버앱에서는 'Google로 로그인'이 불가해요. 😭\n번거로우시겠지만 다음 중 편한 방법을 골라 이용해주세요! 🙏\n\n1) '카카오로 로그인' 또는 '네이버로 로그인'하기\n2) Google Chrome이나 Apple Safari로 들어오기");
         }
     })
 </script>

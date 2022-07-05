@@ -12,8 +12,7 @@ class SocialSignupForm(SignupForm):
         widget=forms.TextInput(
             attrs={
                 "type": "email",
-                "class": "focus:ring-flamingo-500 focus:border-flamingo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md",
-                "placeholder": "you@example.com",
+                "class": "block w-full pl-10 bg-gray-100 sm:text-sm rounded-md border-gray-300 focus:ring-gray-400 focus:border-gray-400",
                 "readonly": "",
             }
         ),
@@ -24,7 +23,7 @@ class SocialSignupForm(SignupForm):
         widget=forms.TextInput(
             attrs={
                 "type": "text",
-                "class": "focus:ring-flamingo-500 focus:border-flamingo-500 relative block w-full rounded-none rounded-l-md bg-transparent focus:z-10 sm:text-sm border-gray-300",
+                "class": "relative block w-full sm:text-sm placeholder-gray-400 rounded-l-md border-gray-300 only-hangul focus:z-10 focus:ring-flamingo-500 focus:border-flamingo-500",
                 "placeholder": "홍",
                 "onkeypress": "onlyHangul(event)",
             }
@@ -36,7 +35,7 @@ class SocialSignupForm(SignupForm):
         widget=forms.TextInput(
             attrs={
                 "type": "text",
-                "class": "focus:ring-flamingo-500 focus:border-flamingo-500 relative block w-full rounded-none rounded-r-md bg-transparent focus:z-10 sm:text-sm border-gray-300",
+                "class": "relative block w-full sm:text-sm placeholder-gray-400 rounded-r-md border-gray-300 only-hangul focus:z-10 focus:ring-flamingo-500 focus:border-flamingo-500",
                 "placeholder": "길동",
                 "onkeypress": "onlyHangul(event)",
             }
@@ -49,21 +48,8 @@ class SocialSignupForm(SignupForm):
         widget=forms.TextInput(
             attrs={
                 "type": "tel",
-                "class": "focus:ring-flamingo-500 focus:border-flamingo-500 block w-full rounded-none rounded-l-md pl-10 sm:text-sm border-gray-300",
+                "class": "block w-full pl-10 sm:text-sm placeholder-gray-400 rounded-l-md border-gray-300 focus:ring-flamingo-500 focus:border-flamingo-500",
                 "placeholder": "010-0000-0000",
-                "onkeypress": "onlyNumber(event)",
-            }
-        ),
-    )
-    v_code = forms.CharField(
-        max_length=6,
-        min_length=6,
-        label="인증 번호",
-        widget=forms.TextInput(
-            attrs={
-                "type": "text",
-                "class": "focus:ring-flamingo-500 focus:border-flamingo-500 block w-full rounded-none rounded-l-md pl-10 sm:text-sm border-gray-300",
-                "placeholder": "000000",
                 "onkeypress": "onlyNumber(event)",
             }
         ),

@@ -1,6 +1,6 @@
 {% load socialaccount %}
 <div class="mt-8 px-4 sm:px-0 mx-auto w-full max-w-md">
-    <div class="bg-white py-8 px-4 shadow rounded-lg sm:px-10">
+    <div class="bg-white py-8 px-4 shadow rounded-md sm:px-10">
         <div class="space-y-5">
             <div>
                 <a href="{% provider_login_url 'google' process=process scope=scope auth_params=auth_params %}"
@@ -80,7 +80,7 @@
                             </g>
                         </g>
                     </svg>
-                    <p class="ml-3">Google로 로그인</p>
+                    <p class="ml-2">Google로 로그인</p>
                 </a>
             </div>
             <div>
@@ -95,7 +95,7 @@
                             </g>
                         </g>
                     </svg>
-                    <span class="ml-3">카카오로 로그인</span>
+                    <span class="ml-2">카카오로 로그인</span>
                 </a>
             </div>
             <div>
@@ -112,7 +112,7 @@
                             </g>
                         </g>
                     </svg>
-                    <span class="ml-3">네이버로 로그인</span>
+                    <span class="ml-2">네이버로 로그인</span>
                 </a>
             </div>
         </div>
