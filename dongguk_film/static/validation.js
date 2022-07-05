@@ -70,10 +70,6 @@ inputs.forEach((input) => {
         }
     })
     input.addEventListener("focusout", () => {
-        if (input == id_email) {
-            descrMsg.innerText = null
-            descrMsg.hidden = true
-        }
         if (input == id_student_id) {
             if (input.value.length == 0) {
                 changeBg(true, input, errorMsg)
@@ -129,9 +125,9 @@ inputs.forEach((input) => {
             descrMsg.hidden = false
         } else {
             changeBg(false, input, errorMsg)
+            descrMsg.innerText = null
+            descrMsg.hidden = true
         }
-        descrMsg.innerText = null
-        descrMsg.hidden = true
     })
 });
 
