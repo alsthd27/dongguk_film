@@ -1,6 +1,7 @@
 const onlyHanguls = document.querySelectorAll(".only-hangul");
 const onlyNumbers = document.querySelectorAll(".only-number");
 const eventTypes = ["focusin", "focusout", "compositionstart", "compositionupdate", "compositionend", "keydown", "keypress", "keyup", "mouseenter", "mouseover", "mousemove", "mousedown", "mouseup", "click", "contextmenu", "mouseleave", "mouseout", "select"];
+const allowedKeys = ["Backspace", "Tab", "Shift"];
 const regNotHangul = /[^ㄱ-ㅎㅏ-ㅣ가-힣]/g;
 const regNotNumber = /[^0-9]/g;
 const regNotPhone = /[^0-9\-]/g;
@@ -40,30 +41,35 @@ inputs.forEach((input) => {
         var descrMsg = eval(String(input.id) + "_description")
         var errorMsg = eval(String(input.id) + "_error")
     }
-    input.addEventListener("keyup", () => {
+    input.addEventListener("keyup", (event) => {
+        var inputKeyChar = event.key
         if (input == id_student_id || input == id_vcode) {
-            if (regNotNumber.test(input.value)) {
+            if (regNotNumber.test(input.value) ||
+                (regNotNumber.test(inputKeyChar) && allowedKeys.indexOf(inputKeyChar) == -1)) {
                 descrMsg.innerText = "숫자만 입력해주세요."
                 descrMsg.hidden = false
-            } else if (!regNotNumber.test(input.value)) {
+            } else {
                 descrMsg.innerText = null
                 descrMsg.hidden = true
             }
         }
         if (input == id_last_name || input == id_first_name) {
-            if (regNotHangul.test(input.value)) {
+            if (regNotHangul.test(input.value) ||
+                (!event.isComposing && allowedKeys.indexOf(inputKeyChar) == -1)) {
                 descrMsg.innerText = "한글만 입력해주세요."
                 descrMsg.hidden = false
-            } else if (!regNotHangul.test(input.value)) {
+                console.log(event.key)
+            } else {
                 descrMsg.innerText = null
                 descrMsg.hidden = true
             }
         }
         if (input == id_phone) {
-            if (regNotPhone.test(input.value)) {
+            if (regNotPhone.test(input.value) ||
+                (regNotPhone.test(inputKeyChar) && allowedKeys.indexOf(inputKeyChar) == -1)) {
                 descrMsg.innerText = "숫자만 입력해주세요."
                 descrMsg.hidden = false
-            } else if (!regNotPhone.test(input.value)) {
+            } else {
                 descrMsg.innerText = null
                 descrMsg.hidden = true
             }
@@ -72,47 +78,47 @@ inputs.forEach((input) => {
     input.addEventListener("focusout", () => {
         if (input == id_student_id) {
             if (input.value.length == 0) {
-                changeBg(true, input, errorMsg)
+                showError(true, input, errorMsg)
                 errorMsg.innerText = "학번을 입력해주세요."
             } else if (input.value.length !== 10) {
-                changeBg(true, input, errorMsg)
+                showError(true, input, errorMsg)
                 errorMsg.innerText = "학번이 덜 입력된 것 같아요."
             } else if (input.value.indexOf("113") !== 4) {
-                changeBg(true, input, errorMsg)
+                showError(true, input, errorMsg)
                 errorMsg.innerText = "학번이 잘못 입력된 것 같아요."
             }
         }
         if (input == id_last_name || input == id_first_name) {
             if (id_last_name.value.length == 0 && id_first_name.value.length == 0) {
-                changeBg(true, id_last_name, errorMsg)
-                changeBg(true, id_first_name, errorMsg)
+                showError(true, id_last_name, errorMsg)
+                showError(true, id_first_name, errorMsg)
                 errorMsg.innerText = "성명을 입력해주세요."
             } else if ((id_last_name.value.length == 0 && id_first_name.value.length !== 0)) {
-                changeBg(true, id_last_name, errorMsg)
+                showError(true, id_last_name, errorMsg)
                 errorMsg.innerText = "성을 입력해주세요."
             } else if ((id_last_name.value.length !== 0 && id_first_name.value.length == 0)) {
-                changeBg(true, id_first_name, errorMsg)
+                showError(true, id_first_name, errorMsg)
                 errorMsg.innerText = "이름을 입력해주세요."
             }
         }
         if (input == id_phone) {
             if (input.value.length == 0) {
-                changeBg(true, input, errorMsg)
+                showError(true, input, errorMsg)
                 errorMsg.innerText = "휴대전화 번호를 입력해주세요."
             } else if (input.value.length !== 13) {
-                changeBg(true, input, errorMsg)
+                showError(true, input, errorMsg)
                 errorMsg.innerText = "휴대전화 번호가 덜 입력된 것 같아요."
             } else if (input.value.indexOf("-") !== 3 && input.value.lastIndexOf("-") !== 8) {
-                changeBg(true, input, errorMsg)
+                showError(true, input, errorMsg)
                 errorMsg.innerText = "휴대전화 번호가 잘못 입력된 것 같아요."
             }
         }
         if (input == id_vcode) {
             if (input.value.length == 0) {
-                changeBg(true, input, errorMsg)
+                showError(true, input, errorMsg)
                 errorMsg.innerText = "인증번호를 입력해주세요."
             } else if (input.value.length !== 6) {
-                changeBg(true, input, errorMsg)
+                showError(true, input, errorMsg)
                 errorMsg.innerText = "인증번호가 덜 입력된 것 같아요."
             }
         }
@@ -124,14 +130,14 @@ inputs.forEach((input) => {
             descrMsg.innerText = "이메일 주소는 수정할 수 없어요."
             descrMsg.hidden = false
         } else {
-            changeBg(false, input, errorMsg)
+            showError(false, input, errorMsg)
             descrMsg.innerText = null
             descrMsg.hidden = true
         }
     })
 });
 
-function changeBg(boolean, input, errorMsg) {
+function showError(boolean, input, errorMsg) {
     if (boolean == true) {
         input.classList.remove("border-gray-300")
         input.classList.add("bg-flamingo-50")
@@ -149,24 +155,5 @@ function changeBg(boolean, input, errorMsg) {
         }
         errorMsg.innerText = null
         errorMsg.hidden = true
-    }
-};
-
-
-// the following do not support mobile
-
-function onlyHangul(event) {
-    var inputKeyChar = String.fromCharCode(event.keyCode)
-    if (regNotHangul.test(inputKeyChar)) {
-        event.returnValue = false
-        alert("한글만 입력해주세요.")
-    }
-};
-
-function onlyNumber(event) {
-    var inputKeyChar = String.fromCharCode(event.keyCode)
-    if (regNotNumber.test(inputKeyChar)) {
-        event.returnValue = false
-        alert("숫자만 입력해주세요.")
     }
 };

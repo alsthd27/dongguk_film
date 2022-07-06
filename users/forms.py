@@ -25,7 +25,7 @@ class SocialSignupForm(SignupForm):
                 "type": "text",
                 "class": "relative block w-full sm:text-sm placeholder-gray-400 rounded-l-md border-gray-300 only-hangul focus:z-10 focus:ring-flamingo-500 focus:border-flamingo-500",
                 "placeholder": "홍",
-                "onkeypress": "onlyHangul(event)",
+                "required": "",
             }
         ),
     )
@@ -37,7 +37,7 @@ class SocialSignupForm(SignupForm):
                 "type": "text",
                 "class": "relative block w-full sm:text-sm placeholder-gray-400 rounded-r-md border-gray-300 only-hangul focus:z-10 focus:ring-flamingo-500 focus:border-flamingo-500",
                 "placeholder": "길동",
-                "onkeypress": "onlyHangul(event)",
+                "required": "",
             }
         ),
     )
@@ -50,7 +50,7 @@ class SocialSignupForm(SignupForm):
                 "type": "tel",
                 "class": "block w-full pl-10 sm:text-sm placeholder-gray-400 rounded-l-md border-gray-300 focus:ring-flamingo-500 focus:border-flamingo-500",
                 "placeholder": "010-0000-0000",
-                "onkeypress": "onlyNumber(event)",
+                "required": "",
             }
         ),
     )
