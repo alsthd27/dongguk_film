@@ -162,6 +162,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# custom User model
+
+AUTH_USER_MODEL = "users.CustomUser"
+
 # REST Framework
 
 REST_FRAMEWORK = {
