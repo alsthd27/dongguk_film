@@ -9,9 +9,7 @@ class SocialSignupForm(SignupForm):
         widget=forms.TextInput(
             attrs={
                 "type": "text",
-                # "class": "block w-full pl-10 bg-gray-100 sm:text-sm rounded-md border-gray-300 focus:ring-gray-400 focus:border-gray-400",
                 "class": "block w-full pl-10 sm:text-sm placeholder-gray-400 rounded-md border-gray-300 focus:ring-flamingo-500 focus:border-flamingo-500",
-                # "readonly": "",
                 "required": "",
             }
         ),
