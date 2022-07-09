@@ -2,19 +2,34 @@ from django.contrib import admin
 from .models import *
 
 
-@admin.register(Profile)
-class UserAdmin(admin.ModelAdmin):
+@admin.register(CustomUser)
+class CustomUserAdmin(admin.ModelAdmin):
     list_display = (
-        "user",
+        "username",
+        "email",
+        "name",
         "phone",
+        "is_staff",
+        "is_active",
+        "date_joined",
     )
     list_display_links = (
-        "user",
+        "username",
+        "email",
+        "name",
         "phone",
+        "is_staff",
+        "is_active",
+        "date_joined",
     )
     search_fields = (
-        "user",
+        "username",
+        "email",
+        "name",
         "phone",
+        "is_staff",
+        "is_active",
+        "date_joined",
     )
 
 

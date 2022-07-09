@@ -1,14 +1,10 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
-
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone = models.CharField(max_length=13, null=False, blank=False)
-
-    class Meta:
-        verbose_name = "프로필"
-        verbose_name_plural = "프로필(들)"
+class CustomUser(AbstractUser):
+    name = models.CharField(_("성명"), max_length=150, null=True, blank=True)
+    phone = models.CharField(_("휴대전화 번호"), max_length=13, null=True, blank=True)
 
 
 class Vcode(models.Model):

@@ -1,19 +1,18 @@
 from allauth.socialaccount.forms import SignupForm
 from django import forms
 
-# models
-from .models import *
-
 
 class SocialSignupForm(SignupForm):
     email = forms.CharField(
-        max_length=40,
+        max_length=100,
         label="이메일 주소",
         widget=forms.TextInput(
             attrs={
-                "type": "email",
-                "class": "block w-full pl-10 bg-gray-100 sm:text-sm rounded-md border-gray-300 focus:ring-gray-400 focus:border-gray-400",
-                "readonly": "",
+                "type": "text",
+                # "class": "block w-full pl-10 bg-gray-100 sm:text-sm rounded-md border-gray-300 focus:ring-gray-400 focus:border-gray-400",
+                "class": "block w-full pl-10 sm:text-sm placeholder-gray-400 rounded-md border-gray-300 focus:ring-flamingo-500 focus:border-flamingo-500",
+                # "readonly": "",
+                "required": "",
             }
         ),
     )
@@ -25,7 +24,7 @@ class SocialSignupForm(SignupForm):
                 "type": "text",
                 "class": "relative block w-full sm:text-sm placeholder-gray-400 rounded-l-md border-gray-300 only-hangul focus:z-10 focus:ring-flamingo-500 focus:border-flamingo-500",
                 "placeholder": "홍",
-                "required": "",
+                "readonly": "",
             }
         ),
     )
@@ -37,6 +36,18 @@ class SocialSignupForm(SignupForm):
                 "type": "text",
                 "class": "relative block w-full sm:text-sm placeholder-gray-400 rounded-r-md border-gray-300 only-hangul focus:z-10 focus:ring-flamingo-500 focus:border-flamingo-500",
                 "placeholder": "길동",
+                "readonly": "",
+            }
+        ),
+    )
+    name = forms.CharField(
+        max_length=10,
+        label="성명",
+        widget=forms.TextInput(
+            attrs={
+                "type": "text",
+                "class": "block w-full pl-10 sm:text-sm placeholder-gray-400 rounded-md border-gray-300 only-hangul focus:ring-flamingo-500 focus:border-flamingo-500",
+                "placeholder": "홍길동",
                 "required": "",
             }
         ),
@@ -57,11 +68,7 @@ class SocialSignupForm(SignupForm):
 
     def save(self, request):
         user = super(SocialSignupForm, self).save(request)
-        user.first_name = self.cleaned_data["first_name"]
-        user.last_name = self.cleaned_data["last_name"]
+        user.name = self.cleaned_data["name"]
+        user.phone = self.cleaned_data["phone"]
         user.save()
-        profile = Profile()
-        profile.user = user
-        profile.phone = self.cleaned_data["phone"]
-        profile.save()
         return user

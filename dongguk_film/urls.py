@@ -19,7 +19,6 @@ from rest_framework import routers
 from users.views import *
 
 router = routers.DefaultRouter()
-router.register("profile", ProfileViewSet)
 router.register("vcode", VcodeViewSet)
 
 urlpatterns = [
