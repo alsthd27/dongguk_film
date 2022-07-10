@@ -10,7 +10,7 @@ const inputs = [];
 const labels = document.querySelectorAll("label");
 
 if ((window.location.pathname).includes("signup")) {
-    inputs.push(id_email, id_student_id, id_name, id_phone, id_vcode)
+    inputs.push(id_student_id, id_name, id_email, id_phone, id_email_vcode, id_phone_vcode)
 };
 
 eventTypes.forEach((type) => {
@@ -35,14 +35,7 @@ eventTypes.forEach((type) => {
 inputs.forEach((input) => {
     input.addEventListener("keydown", (event) => {
         var inputKeyChar = event.key
-        if (input == id_email) {
-            if (inputKeyChar.indexOf("Process") != -1 && allowedKeys.indexOf(inputKeyChar) == -1) {
-                displayDescr(true, input, "no hanguls")
-            } else {
-                displayDescr(false, input)
-            }
-        }
-        if (input == id_student_id || input == id_vcode) {
+        if (input == id_student_id || input == id_email_vcode || input == id_phone_vcode) {
             if (regNotNumber.test(input.value) ||
                 (regNotNumber.test(inputKeyChar) && allowedKeys.indexOf(inputKeyChar) == -1)) {
                 displayDescr(true, input, "only numbers")
@@ -54,6 +47,13 @@ inputs.forEach((input) => {
             if (regNotHangul.test(input.value) ||
                 (!event.isComposing && allowedKeys.indexOf(inputKeyChar) == -1)) {
                 displayDescr(true, input, "only hanguls")
+            } else {
+                displayDescr(false, input)
+            }
+        }
+        if (input == id_email) {
+            if (inputKeyChar.indexOf("Process") != -1 && allowedKeys.indexOf(inputKeyChar) == -1) {
+                displayDescr(true, input, "no hanguls")
             } else {
                 displayDescr(false, input)
             }
@@ -72,58 +72,50 @@ inputs.forEach((input) => {
     })
     input.addEventListener("focusout", () => {
         displayDescr(false, input)
-        if (input == id_email) {
-            if (input.value.length == 0) {
-                displayError(true, input, "empty")
-            }
-            if (input.value.indexOf("@") == -1 ||
-                input.value.split("@")[0].length <= 1 ||
-                input.value.split("@")[1].indexOf(".") == -1 ||
-                input.value.split("@")[1].split(".")[0].length <= 1 ||
-                input.value.split("@")[1].split(".")[1].length <= 1 ||
-                (input.value.split("@")[1].split(".").length - 1 == 2 && input.value.split("@")[1].split(".")[2].length <= 1)) {
-                displayError(true, input, "insufficient")
-            }
-            if (input.value.substr(-1) == "." ||
-                input.value.split("@")[1].split(".").length - 1 == 3) {
-                displayError(true, input, "invalid")
-            }
-        }
         if (input == id_student_id) {
             if (input.value.length == 0) {
                 displayError(true, input, "empty")
-            }
-            if (input.value.length !== 10) {
+            } else if (input.value.length !== 10) {
                 displayError(true, input, "insufficient")
-            }
-            if (input.value.indexOf("113") !== 4) {
+            } else if (input.value.indexOf("113") !== 4) {
                 displayError(true, input, "invalid")
             }
         }
         if (input == id_name) {
             if (input.value.length == 0) {
                 displayError(true, input, "empty")
-            }
-            if (input.value.length == 1) {
+            } else if (input.value.length == 1) {
                 displayError(true, input, "insufficient")
+            }
+        }
+        if (input == id_email) {
+            if (input.value.length == 0) {
+                displayError(true, input, "empty")
+            } else if (input.value.indexOf("@") == -1 ||
+                input.value.split("@")[0].length <= 1 ||
+                input.value.split("@")[1].indexOf(".") == -1 ||
+                input.value.split("@")[1].split(".")[0].length <= 1 ||
+                input.value.split("@")[1].split(".")[1].length <= 1 ||
+                (input.value.split("@")[1].split(".").length - 1 == 2 && input.value.split("@")[1].split(".")[2].length <= 1)) {
+                displayError(true, input, "insufficient")
+            } else if (input.value.substr(-1) == "." ||
+                input.value.split("@")[1].split(".").length - 1 == 3) {
+                displayError(true, input, "invalid")
             }
         }
         if (input == id_phone) {
             if (input.value.length == 0) {
                 displayError(true, input, "empty")
-            }
-            if (input.value.length !== 13) {
+            } else if (input.value.length !== 13) {
                 displayError(true, input, "insufficient")
-            }
-            if (input.value.indexOf("-") !== 3 && input.value.lastIndexOf("-") !== 8) {
+            } else if (input.value.indexOf("-") !== 3 && input.value.lastIndexOf("-") !== 8) {
                 displayError(true, input, "invalid")
             }
         }
-        if (input == id_vcode) {
+        if (input == id_email_vcode || input == id_phone_vcode) {
             if (input.value.length == 0) {
                 displayError(true, input, "empty")
-            }
-            if (input.value.length !== 6) {
+            } else if (input.value.length !== 6) {
                 displayError(true, input, "insufficient")
             }
         }

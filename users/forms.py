@@ -3,17 +3,6 @@ from django import forms
 
 
 class SocialSignupForm(SignupForm):
-    email = forms.CharField(
-        max_length=100,
-        label="이메일 주소",
-        widget=forms.TextInput(
-            attrs={
-                "type": "text",
-                "class": "block w-full pl-10 sm:text-sm placeholder-gray-400 rounded-md border-gray-300 focus:ring-flamingo-500 focus:border-flamingo-500",
-                "required": "",
-            }
-        ),
-    )
     last_name = forms.CharField(
         max_length=10,
         label="성",
@@ -38,14 +27,14 @@ class SocialSignupForm(SignupForm):
             }
         ),
     )
-    name = forms.CharField(
-        max_length=10,
-        label="성명",
+    email = forms.CharField(
+        max_length=100,
+        label="이메일 주소",
         widget=forms.TextInput(
             attrs={
                 "type": "text",
-                "class": "block w-full pl-10 sm:text-sm placeholder-gray-400 rounded-md border-gray-300 only-hangul focus:ring-flamingo-500 focus:border-flamingo-500",
-                "placeholder": "홍길동",
+                "class": "block w-full pl-10 sm:text-sm placeholder-gray-400 rounded-md border-gray-300 focus:ring-flamingo-500 focus:border-flamingo-500",
+                "placeholder": "gildong@example.com",
                 "required": "",
             }
         ),
@@ -57,7 +46,7 @@ class SocialSignupForm(SignupForm):
         widget=forms.TextInput(
             attrs={
                 "type": "tel",
-                "class": "block w-full pl-10 sm:text-sm placeholder-gray-400 rounded-l-md border-gray-300 focus:ring-flamingo-500 focus:border-flamingo-500",
+                "class": "block w-full pl-10 sm:text-sm placeholder-gray-400 rounded-md border-gray-300 focus:ring-flamingo-500 focus:border-flamingo-500",
                 "placeholder": "010-0000-0000",
                 "required": "",
             }

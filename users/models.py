@@ -3,8 +3,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 class CustomUser(AbstractUser):
-    name = models.CharField(_("성명"), max_length=150, null=True, blank=True)
-    phone = models.CharField(_("휴대전화 번호"), max_length=13, null=True, blank=True)
+    name = models.CharField(_("name"), max_length=150, null=True, blank=True)
+    phone = models.CharField(_("phone number"), max_length=13, null=True, blank=True)
 
 
 class Vcode(models.Model):
