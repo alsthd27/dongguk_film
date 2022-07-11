@@ -207,7 +207,17 @@ SOCIALACCOUNT_PROVIDERS = {
             "prompt": "select_account",
             # "hd": "dgu.ac.kr",
         },
-    }
+    },
+    "kakao": {
+        "AUTH_PARAMS": {
+            "prompt": "login",
+        },
+    },
+    "naver": {
+        "AUTH_PARAMS": {
+            "auth_type": "reprompt",
+        },
+    },
 }
 
 SOCIALACCOUNT_AUTO_SIGNUP = False
