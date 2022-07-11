@@ -1,10 +1,15 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from django.utils.translation import gettext_lazy as _
+
 
 class CustomUser(AbstractUser):
-    name = models.CharField(_("name"), max_length=150, null=True, blank=True)
-    phone = models.CharField(_("phone number"), max_length=13, null=True, blank=True)
+    name = models.CharField(("성명"), max_length=150, null=True, blank=True)
+    phone = models.CharField(("휴대전화 번호"), max_length=13, null=True, blank=True)
+    extra_data = models.CharField(("부가 정보"), max_length=1000, null=True, blank=True)
+
+    class Meta:
+        verbose_name = "사용자"
+        verbose_name_plural = "사용자(들)"
 
 
 class Vcode(models.Model):

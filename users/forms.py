@@ -3,27 +3,28 @@ from django import forms
 
 
 class SocialSignupForm(SignupForm):
-    last_name = forms.CharField(
-        max_length=10,
-        label="성",
+    extra_data = forms.CharField(
+        max_length=1000,
+        label="부가 정보",
         widget=forms.TextInput(
             attrs={
                 "type": "text",
-                "class": "relative block w-full sm:text-sm placeholder-gray-400 rounded-l-md border-gray-300 only-hangul focus:z-10 focus:ring-flamingo-500 focus:border-flamingo-500",
-                "placeholder": "홍",
+                "class": "block w-full sm:text-sm placeholder-gray-400 rounded-md border-gray-300 focus:ring-flamingo-500 focus:border-flamingo-500",
+                "placeholder": "https://lh3.googleusercontent.com/...#Google",
                 "readonly": "",
             }
         ),
     )
-    first_name = forms.CharField(
-        max_length=10,
-        label="명",
+    name = forms.CharField(
+        max_length=15,
+        min_length=2,
+        label="성명",
         widget=forms.TextInput(
             attrs={
                 "type": "text",
-                "class": "relative block w-full sm:text-sm placeholder-gray-400 rounded-r-md border-gray-300 only-hangul focus:z-10 focus:ring-flamingo-500 focus:border-flamingo-500",
-                "placeholder": "길동",
-                "readonly": "",
+                "class": "block w-full sm:text-sm placeholder-gray-400 rounded-md border-gray-300 only-hangul focus:ring-flamingo-500 focus:border-flamingo-500",
+                "placeholder": "홍길동",
+                "required": "",
             }
         ),
     )
@@ -33,7 +34,7 @@ class SocialSignupForm(SignupForm):
         widget=forms.TextInput(
             attrs={
                 "type": "text",
-                "class": "block w-full pl-10 sm:text-sm placeholder-gray-400 rounded-md border-gray-300 focus:ring-flamingo-500 focus:border-flamingo-500",
+                "class": "block w-full sm:text-sm placeholder-gray-400 rounded-md border-gray-300 focus:ring-flamingo-500 focus:border-flamingo-500",
                 "placeholder": "gildong@example.com",
                 "required": "",
             }
@@ -46,7 +47,7 @@ class SocialSignupForm(SignupForm):
         widget=forms.TextInput(
             attrs={
                 "type": "tel",
-                "class": "block w-full pl-10 sm:text-sm placeholder-gray-400 rounded-md border-gray-300 focus:ring-flamingo-500 focus:border-flamingo-500",
+                "class": "block w-full sm:text-sm placeholder-gray-400 rounded-md border-gray-300 focus:ring-flamingo-500 focus:border-flamingo-500",
                 "placeholder": "010-0000-0000",
                 "required": "",
             }
