@@ -38,6 +38,20 @@ def get_secret(setting):
 
 SECRET_KEY = get_secret("SECRET_KEY")
 
+DISCORD_TOKEN = get_secret("DISCORD_TOKEN")
+
+DISCORD_MGT_WEBHOOK_URL = get_secret("DISCORD_MGT_WEBHOOK_URL")
+
+DISCORD_DEV_WEBHOOK_URL = get_secret("DISCORD_DEV_WEBHOOK_URL")
+
+NCP_ACCESS_KEY_ID = get_secret("NCP_ACCESS_KEY_ID")
+
+NCP_SECRET_KEY = get_secret("NCP_SECRET_KEY")
+
+NCP_SENS_SMS_SERVICE_ID = get_secret("NCP_SENS_SMS_SERVICE_ID")
+
+MGT_PHONE = get_secret("MGT_PHONE")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -169,7 +183,12 @@ AUTH_USER_MODEL = "users.CustomUser"
 # REST Framework
 
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",)
+    # "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    # "DEFAULT_PARSER_CLASSES": [
+    #     "rest_framework.parsers.JSONParser",
+    # ],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
 }
 
 # Django-allauth
@@ -215,7 +234,7 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     "naver": {
         "AUTH_PARAMS": {
-            "auth_type": "reprompt",
+            "auth_type": "reauthenticate",
         },
     },
 }

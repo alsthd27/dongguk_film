@@ -3,6 +3,7 @@ from django.db import models
 
 
 class CustomUser(AbstractUser):
+    student_id = models.CharField(max_length=10, null=True, blank=True)
     name = models.CharField(("성명"), max_length=150, null=True, blank=True)
     phone = models.CharField(("휴대전화 번호"), max_length=13, null=True, blank=True)
     extra_data = models.CharField(("부가 정보"), max_length=1000, null=True, blank=True)
@@ -13,9 +14,9 @@ class CustomUser(AbstractUser):
 
 
 class Vcode(models.Model):
-    phone = models.CharField(max_length=13, null=True, blank=True)
-    email = models.CharField(max_length=20, null=True, blank=True)
-    vcode = models.CharField(max_length=10, null=False, blank=False)
+    student_id = models.CharField(max_length=10, null=True, blank=True)
+    email_vcode = models.CharField(max_length=6, null=True, blank=True)
+    phone_vcode = models.CharField(max_length=6, null=True, blank=True)
     will_expire_on = models.DateTimeField(null=True, blank=True)
 
     class Meta:

@@ -19,7 +19,7 @@ from rest_framework import routers
 from users.views import *
 
 router = routers.DefaultRouter()
-router.register("vcode", VcodeViewSet)
+# router.register(r"vcode", VcodeViewSet)
 
 urlpatterns = [
     path("api/", include(router.urls)),

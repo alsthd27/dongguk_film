@@ -7,6 +7,7 @@ class CustomUserAdmin(admin.ModelAdmin):
     list_display = (
         "username",
         "email",
+        "student_id",
         "name",
         "phone",
         "is_staff",
@@ -16,6 +17,7 @@ class CustomUserAdmin(admin.ModelAdmin):
     list_display_links = (
         "username",
         "email",
+        "student_id",
         "name",
         "phone",
         "is_staff",
@@ -25,6 +27,7 @@ class CustomUserAdmin(admin.ModelAdmin):
     search_fields = (
         "username",
         "email",
+        "student_id",
         "name",
         "phone",
         "is_staff",
@@ -36,20 +39,20 @@ class CustomUserAdmin(admin.ModelAdmin):
 @admin.register(Vcode)
 class VcodeAdmin(admin.ModelAdmin):
     list_display = (
-        "phone",
-        "email",
-        "vcode",
+        "student_id",
+        "email_vcode",
+        "phone_vcode",
         "will_expire_on",
     )
     list_display_links = (
-        "phone",
-        "email",
-        "vcode",
+        "student_id",
+        "email_vcode",
+        "phone_vcode",
         "will_expire_on",
     )
     search_fields = (
-        "phone",
-        "email",
-        "vcode",
+        "student_id",
+        "email_vcode",
+        "phone_vcode",
         "will_expire_on",
     )
