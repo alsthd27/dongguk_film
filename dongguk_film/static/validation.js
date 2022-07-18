@@ -291,7 +291,7 @@ function createVcode() {
         "phone": `${id_phone.value}`
     }
     $.ajax({
-        url: "/users/create-vcode",
+        url: `${location.protocol}//${location.host}/users/create-vcode`,
         type: "POST",
         data: JSON.stringify(data),
         dataType: "json",
@@ -316,7 +316,7 @@ function confirmVcode() {
         "phone_vcode": `${id_phone_vcode.value}`
     }
     $.ajax({
-        url: "/users/confirm-vcode",
+        url: `${location.protocol}//${location.host}/users/confirm-vcode`,
         type: "POST",
         data: JSON.stringify(data),
         dataType: "json",
