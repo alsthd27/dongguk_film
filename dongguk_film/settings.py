@@ -62,9 +62,9 @@ ALLOWED_HOSTS = ["dongguk.film", "www.dongguk.film"]
 
 SECURE_SSL_REDIRECT = True
 
-SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = True
 
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 
 
 # Application definition
