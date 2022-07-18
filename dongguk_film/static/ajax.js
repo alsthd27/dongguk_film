@@ -11,21 +11,15 @@ function getCookie(name) {
         }
     }
     return cookieValue;
-};
-
+}
+var csrftoken = getCookie("csrftoken");
 function csrfSafeMethod(method) {
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-};
-
-function ajaxInit() {
-    var csrftoken = getCookie("csrftoken");
-    $.ajaxSetup({
-        beforeSend: function (xhr, settings) {
-            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                xhr.setRequestHeader("X-CSRFToken", csrftoken);
-            }
+}
+$.ajaxSetup({
+    beforeSend: function (xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
         }
-    })
-};
-
-ajaxInit();
+    }
+});
