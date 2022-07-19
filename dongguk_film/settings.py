@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     "home",
     "facility",
     "users",
+    "utility",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -224,7 +225,6 @@ SOCIALACCOUNT_PROVIDERS = {
         "AUTH_PARAMS": {
             "access_type": "offline",
             "prompt": "select_account",
-            # "hd": "dgu.ac.kr",
         },
     },
     "kakao": {

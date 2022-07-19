@@ -61,7 +61,6 @@ def send_msg(request, str_msg_type):
     type = str_msg_type
     webhook = None
     individual_content = None
-    # default_picture_url = f"{request.scheme}://{request.get_host()}/static/d_dot_f_logo.jpg"
     default_picture_url = "https://dongguk.film/static/d_dot_f_logo.jpg"
     if type == "unexpected request":
         webhook = get_webhook("dev")

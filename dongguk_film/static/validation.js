@@ -25,19 +25,19 @@ if ((window.location.pathname).includes("signup")) {
     inputs.push(...checkBoxes)
     inputs.push(...stepOnes)
     inputs.push(...stepTwos)
-    id_get_vcode.addEventListener("click", () => {
+    id_create_vcode.addEventListener("click", () => {
         filteredInputs = inputs.filter(isValid)
         if (filteredInputs.length == inputs.length - stepTwos.length) {
-            createVcode();
-            id_get_vcode_description.innerText = "인증번호가 전송되었어요!";
-            id_get_vcode_description.hidden = false;
+            makeAjaxCall("create vcode");
+            id_create_vcode_description.innerText = "인증번호가 전송되었어요!";
+            id_create_vcode_description.hidden = false;
             checkBoxes.forEach((input) => {
                 input.disabled = true;
             })
             stepOnes.forEach((input) => {
                 input.readOnly = true;
             })
-            id_get_vcode.disabled = true;
+            id_create_vcode.disabled = true;
             stepTwos.forEach((input) => {
                 input.disabled = false;
             })
@@ -54,7 +54,7 @@ if ((window.location.pathname).includes("signup")) {
     id_confirm_vcode.addEventListener("click", () => {
         filteredInputs = inputs.filter(isValid)
         if (filteredInputs.length == inputs.length) {
-            confirmVcode();
+            makeAjaxCall("confirm vcode");
         } else {
             stepTwos.forEach((input) => {
                 manageError(input);
@@ -85,8 +85,7 @@ function validation() {
                 input.value = input.value.replace(regNotNumber, "").replace(/(^0[0-9]{2})([0-9]+)?([0-9]{4})$/, "$1-$2-$3").replace("--", "-")
             })
         })
-    });
-
+    })
     inputs.forEach((input) => {
         input.addEventListener("keydown", (event) => {
             manageDescr(input, event);
@@ -98,7 +97,7 @@ function validation() {
         input.addEventListener("focusin", () => {
             displayError(false, input);
         });
-    });
+    })
 };
 
 function manageDescr(input, event) {
@@ -257,16 +256,16 @@ function codeError(input) {
     return eval(String(input.id) + "_error")
 };
 
-function matchJosa(word, type) {
+function matchJosa(word, josaType) {
     var hasBatchim = (word.substr(-1).charCodeAt(0) - parseInt("ac00", 16)) % 28 > 0
     var josaAdded
-    if (type == "을를") {
+    if (josaType == "을를") {
         josaAdded = hasBatchim ? word + "을" : word + "를"
-    } else if (type == "이가") {
+    } else if (josaType == "이가") {
         josaAdded = hasBatchim ? word + "이" : word + "가"
-    } else if (type == "은는") {
+    } else if (josaType == "은는") {
         josaAdded = hasBatchim ? word + "은" : word + "는"
-    } else if (type == "와과") {
+    } else if (josaType == "와과") {
         josaAdded = hasBatchim ? word + "과" : word + "와"
     }
     return josaAdded
@@ -282,16 +281,31 @@ function findLabel(input) {
     return labelStr
 };
 
-function createVcode() {
-    data = {
-        "agree": `${id_agree.checked}`,
-        "student_id": `${id_student_id.value}`,
-        "name": `${id_name.value}`,
-        "email": `${id_email.value}`,
-        "phone": `${id_phone.value}`
+function makeAjaxCall(callType) {
+    var defaultUrl = `${location.protocol}//${location.host}`
+    if (callType == "create vcode") {
+        data = {
+            "agree": `${id_agree.checked}`,
+            "student_id": `${id_student_id.value}`,
+            "name": `${id_name.value}`,
+            "email": `${id_email.value}`,
+            "phone": `${id_phone.value}`
+        }
+        url = `${defaultUrl}/utility/create-vcode`
+    } else if (callType == "confirm vcode") {
+        data = {
+            "agree": `${id_agree.checked}`,
+            "student_id": `${id_student_id.value}`,
+            "name": `${id_name.value}`,
+            "email": `${id_email.value}`,
+            "phone": `${id_phone.value}`,
+            "email_vcode": `${id_email_vcode.value}`,
+            "phone_vcode": `${id_phone_vcode.value}`
+        }
+        url = `${defaultUrl}/utility/confirm-vcode`
     }
     $.ajax({
-        url: `${location.protocol}//${location.host}/users/create-vcode`,
+        url: url,
         type: "POST",
         data: JSON.stringify(data),
         dataType: "json",
@@ -300,34 +314,13 @@ function createVcode() {
             console.log(object.status);
         },
         error: function () {
-            console.log("failed to create vcode");
+            callType == "create vcode"
+                ? console.log("failed to create vcode")
+                : callType == "confirm vcode"
+                    ? console.log("failed to confirm vcode")
+                    : console.log("an unknown error occurred")
         },
     })
-};
-
-function confirmVcode() {
-    data = {
-        "agree": `${id_agree.checked}`,
-        "student_id": `${id_student_id.value}`,
-        "name": `${id_name.value}`,
-        "email": `${id_email.value}`,
-        "phone": `${id_phone.value}`,
-        "email_vcode": `${id_email_vcode.value}`,
-        "phone_vcode": `${id_phone_vcode.value}`
-    }
-    $.ajax({
-        url: `${location.protocol}//${location.host}/users/confirm-vcode`,
-        type: "POST",
-        data: JSON.stringify(data),
-        dataType: "json",
-        contentType: "application/json",
-        success: function (object) {
-            console.log(object.status);
-        },
-        error: function () {
-            console.log("failed to confirm vcode");
-        },
-    })
-};
+}
 
 validation();
