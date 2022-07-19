@@ -53,18 +53,22 @@ NCP_SENS_SMS_SERVICE_ID = get_secret("NCP_SENS_SMS_SERVICE_ID")
 MGT_PHONE = get_secret("MGT_PHONE")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["dongguk.film", "www.dongguk.film"]
+ALLOWED_HOSTS = ["*"]
+
+# DEBUG = False
+
+# ALLOWED_HOSTS = ["dongguk.film", "www.dongguk.film"]
 
 
 # Security
 
-SECURE_SSL_REDIRECT = True
+# SECURE_SSL_REDIRECT = True
 
-SESSION_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
-CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 
 # Application definition
@@ -177,7 +181,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# custom User model
+# Custom User model
 
 AUTH_USER_MODEL = "users.CustomUser"
 
@@ -250,3 +254,17 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_REQUIRED = True
 
 ACCOUNT_AUTHENTICATION_METHOD = "email"
+
+# Email
+
+EMAIL_HOST = "smtp.gmail.com"
+
+EMAIL_PORT = "587"
+
+EMAIL_HOST_USER = get_secret("EMAIL_HOST_USER")
+
+EMAIL_HOST_PASSWORD = get_secret("EMAIL_HOST_PASSWORD")
+
+EMAIL_USE_TLS = True
+
+DEFAULT_FROM_EMAIL = get_secret("DEFAULT_FROM_EMAIL")

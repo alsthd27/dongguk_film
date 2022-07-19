@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.utils import timezone
 from users.models import Vcode
 from .discord_webhook import send_msg
-# from .gmail import send_mail
+from .gmail import send_mail
 from .ncp_sens import send_sms
 import json, re, datetime, random, string
 
@@ -32,18 +32,22 @@ def create_vcode(request):
                 will_expire_on=will_expire_on,
             )
             data_to_send = {
-                "phone": phone,
+                "type": "sign up",
                 "email": email,
-                "content": phone_vcode,
+                "phone": phone,
+                "content": {
+                    "email_vcode": email_vcode,
+                    "phone_vcode": phone_vcode
+                },
             }
-            # mail_response = send_mail(data_to_send, "sign up")
-            sms_response = json.loads(send_sms(data_to_send, "sign up"))
+            send_mail(data_to_send)
+            sms_response = json.loads(send_sms(data_to_send))
             # status = (
-            #     "vcode created and sent via mail, sms"
-            #     if mail_response["statusCode"] == "202"
+            #     "vcode created and sent via mail, sms / " + str(mail_response) + " / " + type(mail_response)
+            #     if mail_response
             #     and sms_response["statusCode"] == "202"
             #     else "vcode created and sent via mail"
-            #     if mail_response["statusCode"] == "202"
+            #     if mail_response
             #     else "vcode created and sent via sms"
             #     if sms_response["statusCode"] == "202"
             #     else "vcode created but not sent"
