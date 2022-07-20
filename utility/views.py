@@ -35,26 +35,17 @@ def create_vcode(request):
                 "type": "sign up",
                 "email": email,
                 "phone": phone,
-                "content": {
-                    "email_vcode": email_vcode,
-                    "phone_vcode": phone_vcode
-                },
+                "content": {"email_vcode": email_vcode, "phone_vcode": phone_vcode},
             }
-            send_mail(data_to_send)
+            mail_response = send_mail(data_to_send)
             sms_response = json.loads(send_sms(data_to_send))
-            # status = (
-            #     "vcode created and sent via mail, sms / " + str(mail_response) + " / " + type(mail_response)
-            #     if mail_response
-            #     and sms_response["statusCode"] == "202"
-            #     else "vcode created and sent via mail"
-            #     if mail_response
-            #     else "vcode created and sent via sms"
-            #     if sms_response["statusCode"] == "202"
-            #     else "vcode created but not sent"
-            # )
             status = (
-                "vcode created and sent via sms"
-                if sms_response.get("statusCode") == "202"
+                "vcode created and sent via mail, sms"
+                if mail_response == 1 and sms_response["statusCode"] == "202"
+                else "vcode created and sent via mail"
+                if mail_response == 1
+                else "vcode created and sent via sms"
+                if sms_response["statusCode"] == "202"
                 else "vcode created but not sent"
             )
             context = {"status": status}
