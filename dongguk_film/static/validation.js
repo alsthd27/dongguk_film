@@ -14,39 +14,27 @@ const inputs = [];
 const enableAfterVerifs = document.querySelectorAll(".enable-after-verif");
 
 if ((window.location.pathname).includes("signup")) {
-    var checkBoxes = document.querySelectorAll("input[type='checkbox']")
     var stepOnes = document.querySelectorAll(".step-one");
     var stepTwos = document.querySelectorAll(".step-two");
     var filteredInputs = [];
-    function isValid(input) {
-        var condition = input.type != "checkbox" ? input.value.length > 0 : input.checked
-        return condition && codeDescr(input).hidden && codeError(input).hidden
-    }
-    inputs.push(...checkBoxes)
-    inputs.push(...stepOnes)
-    inputs.push(...stepTwos)
+    initValidation(stepOnes, id_create_vcode);
     id_create_vcode.addEventListener("click", () => {
         filteredInputs = inputs.filter(isValid)
-        if (filteredInputs.length == inputs.length - stepTwos.length) {
+        if (filteredInputs.length == inputs.length) {
             makeAjaxCall("create vcode");
             id_create_vcode_description.innerText = "인증번호가 전송되었어요!";
             id_create_vcode_description.hidden = false;
-            checkBoxes.forEach((input) => {
-                input.disabled = true;
-            })
             stepOnes.forEach((input) => {
-                input.readOnly = true;
+                input.type == "checkbox" ? input.disabled = true : input.readOnly = true;
             })
             id_create_vcode.disabled = true;
             stepTwos.forEach((input) => {
                 input.disabled = false;
             })
             id_confirm_vcode.disabled = false;
+            initValidation(stepTwos, id_confirm_vcode);
         } else {
-            checkBoxes.forEach((input) => {
-                manageError(input);
-            })
-            stepOnes.forEach((input) => {
+            inputs.forEach((input) => {
                 manageError(input);
             })
         }
@@ -56,7 +44,7 @@ if ((window.location.pathname).includes("signup")) {
         if (filteredInputs.length == inputs.length) {
             makeAjaxCall("confirm vcode");
         } else {
-            stepTwos.forEach((input) => {
+            inputs.forEach((input) => {
                 manageError(input);
             })
         }
@@ -88,6 +76,7 @@ function validation() {
     })
     inputs.forEach((input) => {
         input.addEventListener("keydown", (event) => {
+            displayError(false, input);
             manageDescr(input, event);
         });
         input.addEventListener("focusout", () => {
@@ -167,6 +156,8 @@ function manageError(input) {
     if (input == id_agree) {
         if (input.checked == false) {
             displayError(true, input, "unchecked");
+        } else {
+            return false;
         }
     }
     if (input == id_student_id) {
@@ -176,6 +167,8 @@ function manageError(input) {
             displayError(true, input, "insufficient");
         } else if (input.value.indexOf("113") !== 4) {
             displayError(true, input, "invalid");
+        } else {
+            return false;
         }
     }
     if (input == id_name) {
@@ -183,6 +176,8 @@ function manageError(input) {
             displayError(true, input, "empty");
         } else if (input.value.length == 1) {
             displayError(true, input, "insufficient");
+        } else {
+            return false;
         }
     }
     if (input == id_email) {
@@ -197,6 +192,8 @@ function manageError(input) {
             displayError(true, input, "insufficient");
         } else if (!input.value.match(regEmail)) {
             displayError(true, input, "invalid");
+        } else {
+            return false;
         }
     }
     if (input == id_phone) {
@@ -206,6 +203,8 @@ function manageError(input) {
             displayError(true, input, "insufficient");
         } else if (input.value.indexOf("-") !== 3 && input.value.lastIndexOf("-") !== 8) {
             displayError(true, input, "invalid");
+        } else {
+            return false;
         }
     }
     if (input == id_email_vcode || input == id_phone_vcode) {
@@ -213,8 +212,11 @@ function manageError(input) {
             displayError(true, input, "empty");
         } else if (input.value.length !== 6) {
             displayError(true, input, "insufficient");
+        } else {
+            return false;
         }
     }
+    return true;
 };
 
 function displayError(boolean, input, errorType) {
@@ -311,7 +313,19 @@ function makeAjaxCall(callType) {
         dataType: "json",
         contentType: "application/json",
         success: function (object) {
-            console.log(object.status);
+            var status = object.status
+            console.log(status);
+            if (status == "vcode confirmed") {
+                id_confirm_vcode_error.innerText = null;
+                id_confirm_vcode_error.hidden = true;
+                inputs.forEach((input) => {
+                    input.disabled = true;
+                })
+                id_confirm_vcode.disabled = true;
+            } else if (status == "invalid vcode") {
+                id_confirm_vcode_error.innerText = "인증번호가 잘못 입력된 것 같아요.";
+                id_confirm_vcode_error.hidden = false;
+            }
         },
         error: function () {
             callType == "create vcode"
@@ -321,6 +335,27 @@ function makeAjaxCall(callType) {
                     : console.log("an unknown error occurred")
         },
     })
-}
+};
+
+function isValid(input) {
+    return input.type == "checkbox" ? input.checked : manageError(input) == false && codeDescr(input).hidden && codeError(input).hidden
+};
+
+function submitForm(button) {
+    inputs.forEach((input) => {
+        input.addEventListener("keypress", (event) => {
+            if (event.key == "Enter") {
+                button.click();
+            }
+        })
+    })
+};
+
+function initValidation(array, button) {
+    inputs.length = 0;
+    inputs.push(...array);
+    validation();
+    submitForm(button);
+};
 
 validation();
