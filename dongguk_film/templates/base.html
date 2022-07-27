@@ -51,11 +51,7 @@
     <link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon/favicon-96x96.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'favicon/manifest.json' %}">
-    {% if 'login' in request.get_full_path %}
-    <title>로그인 - 디닷에프</title>
-    {% else %}
     <title>{% block title %}{% endblock %}</title>
-    {% endif %}
 </head>
 
 <body class="antialiased font-pretendard bg-gray-100 overflow-auto">

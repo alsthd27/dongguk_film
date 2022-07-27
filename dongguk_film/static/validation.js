@@ -1,17 +1,17 @@
-const onlyHanguls = document.querySelectorAll(".only-hangul");
-const onlyNumbers = document.querySelectorAll(".only-number");
-const onlyEmails = document.querySelectorAll(".only-email");
-const onlyPhones = document.querySelectorAll(".only-phone");
-const eventTypes = ["focusin", "focusout", "compositionstart", "compositionupdate", "compositionend", "keydown", "keypress", "keyup", "mouseenter", "mouseover", "mousemove", "mousedown", "mouseup", "click", "contextmenu", "mouseleave", "mouseout", "select"];
-const allowedKeys = ["Enter", "Backspace", "Tab", "Shift", "Control", "Alt", "HangulMode", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"];
-const regHangul = /[ㄱ-ㅎㅏ-ㅣ가-힣]/g;
-const regNotHangul = /[^ㄱ-ㅎㅏ-ㅣ가-힣]/g;
-const regEmail = /^[0-9a-zA-Z]([\-.\w]*[0-9a-zA-Z\-_+])*@([0-9a-zA-Z][\-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9}$/g;
-const regNotNumber = /[^0-9]/g;
-const regNotPhone = /[^0-9\-]/g;
-const labels = document.querySelectorAll("label");
-const inputs = [];
-const enableAfterVerifs = document.querySelectorAll(".enable-after-verif");
+let onlyHanguls = document.querySelectorAll(".only-hangul");
+let onlyNumbers = document.querySelectorAll(".only-number");
+let onlyEmails = document.querySelectorAll(".only-email");
+let onlyPhones = document.querySelectorAll(".only-phone");
+let eventTypes = ["focusin", "focusout", "compositionstart", "compositionupdate", "compositionend", "keydown", "keypress", "keyup", "mouseenter", "mouseover", "mousemove", "mousedown", "mouseup", "click", "contextmenu", "mouseleave", "mouseout", "select"];
+let allowedKeys = ["Enter", "Backspace", "Tab", "Shift", "Control", "Alt", "HangulMode", "ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"];
+let regHangul = /[ㄱ-ㅎㅏ-ㅣ가-힣]/g;
+let regNotHangul = /[^ㄱ-ㅎㅏ-ㅣ가-힣]/g;
+let regEmail = /^[0-9a-zA-Z]([\-.\w]*[0-9a-zA-Z\-_+])*@([0-9a-zA-Z][\-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9}$/g;
+let regNotNumber = /[^0-9]/g;
+let regNotPhone = /[^0-9\-]/g;
+let labels = document.querySelectorAll("label");
+let inputs = [];
+let enableAfterVerifs = document.querySelectorAll(".enable-after-verif");
 
 if ((window.location.pathname).includes("signup")) {
     var stepOnes = document.querySelectorAll(".step-one");
@@ -315,17 +315,7 @@ function makeAjaxCall(callType) {
         success: function (object) {
             var status = object.status
             console.log(status);
-            if (status == "vcode confirmed") {
-                id_confirm_vcode_error.innerText = null;
-                id_confirm_vcode_error.hidden = true;
-                inputs.forEach((input) => {
-                    input.disabled = true;
-                })
-                id_confirm_vcode.disabled = true;
-            } else if (status == "invalid vcode") {
-                id_confirm_vcode_error.innerText = "인증번호가 잘못 입력된 것 같아요.";
-                id_confirm_vcode_error.hidden = false;
-            }
+            handleAjaxCallback(status);
         },
         error: function () {
             callType == "create vcode"
@@ -335,6 +325,23 @@ function makeAjaxCall(callType) {
                     : console.log("an unknown error occurred")
         },
     })
+};
+
+function handleAjaxCallback(status) {
+    if (status == "vcode confirmed") {
+        id_confirm_vcode_error.innerText = null;
+        id_confirm_vcode_error.hidden = true;
+        inputs = document.querySelectorAll("input");
+        inputs.forEach((input) => {
+            input.disabled = false;
+            input.readOnly = true;
+        })
+        id_confirm_vcode.disabled = true;
+        document.querySelector("form").submit();
+    } else if (status == "invalid vcode") {
+        id_confirm_vcode_error.innerText = "인증번호가 잘못 입력된 것 같아요.";
+        id_confirm_vcode_error.hidden = false;
+    }
 };
 
 function isValid(input) {

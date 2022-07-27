@@ -20,8 +20,8 @@ def format_msg(dict_content, str_msg_type):
     content = dict_content
     type = str_msg_type
     color = discord.Color
-    if type == "unexpected request" or type == "server-side validation failed":
-        color = color.red()
+    # if type == "unexpected request" or type == "server-side validation failed":
+    color = color.red()
     embed = discord.Embed(
         title=content["title"],
         url=content["url"],
@@ -81,6 +81,16 @@ def send_msg(request, str_msg_type):
             "url": "",
             "thumbnail_url": "",
             "description": "Server-side validation failed. It looks like the user passed the client-side validation abnormally.",
+        }
+    elif type == "duplicate signup attempted":
+        webhook = get_webhook("dev")
+        individual_content = {
+            "picture_url": default_picture_url,
+            "author_url": "",
+            "title": "Duplicate signup attempted",
+            "url": "",
+            "thumbnail_url": "",
+            "description": "Duplicate signup attempted. It seems that the user entered a student id already registered in the DB.",
         }
     content = {
         "name": request.user,

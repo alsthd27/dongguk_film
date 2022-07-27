@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block meta %}
+<meta property="og:url" content="{% url 'home:home' %}">
+<meta property="og:title" content="디닷에프 - 동국대학교 영화영상학과 올인원 플랫폼">
+<meta property="og:description" content="동국대학교 영화영상학과의 시설이용, 전자문서, 편의기능, 공지사항 서비스를 제공하는 올인원 플랫폼입니다.">
+<meta name="description" content="동국대학교 영화영상학과의 시설이용, 전자문서, 편의기능, 공지사항 서비스를 제공하는 올인원 플랫폼입니다.">
+<!-- <meta name="robots" content="index,follow"> -->
+{% endblock %}
+
+{% block title %}로그인 - 디닷에프{% endblock %}
+
 {% block body %}
 <div class="absolute inset-0">
     <div class="min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8">

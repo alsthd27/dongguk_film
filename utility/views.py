@@ -108,7 +108,7 @@ def validation(
             ):
                 result = True
         except:
-            result = False
+            pass
     boolean_result = result
     return boolean_result
 
