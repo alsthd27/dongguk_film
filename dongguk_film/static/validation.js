@@ -11,7 +11,8 @@ let regNotNumber = /[^0-9]/g;
 let regNotPhone = /[^0-9\-]/g;
 let labels = document.querySelectorAll("label");
 let inputs = [];
-let enableAfterVerifs = document.querySelectorAll(".enable-after-verif");
+let buttons = document.querySelectorAll("button");
+let now = new Date();
 
 if ((window.location.pathname).includes("signup")) {
     var stepOnes = document.querySelectorAll(".step-one");
@@ -22,32 +23,38 @@ if ((window.location.pathname).includes("signup")) {
         filteredInputs = inputs.filter(isValid)
         if (filteredInputs.length == inputs.length) {
             makeAjaxCall("create vcode");
-            id_create_vcode_description.innerText = "인증번호가 전송되었어요!";
-            id_create_vcode_description.hidden = false;
-            stepOnes.forEach((input) => {
-                input.type == "checkbox" ? input.disabled = true : input.readOnly = true;
-            })
-            id_create_vcode.disabled = true;
-            stepTwos.forEach((input) => {
-                input.disabled = false;
-            })
-            id_confirm_vcode.disabled = false;
-            initValidation(stepTwos, id_confirm_vcode);
+            displayButtonMsg(false, id_create_vcode, "descr");
+            displayButtonMsg(false, id_create_vcode, "error");
         } else {
             inputs.forEach((input) => {
                 manageError(input);
             })
         }
+        ["keydown", "focusin"].forEach((type) => {
+            inputs.forEach((input) => {
+                input.addEventListener(type, () => {
+                    displayButtonMsg(false, id_create_vcode, "error");
+                })
+            })
+        })
     })
     id_confirm_vcode.addEventListener("click", () => {
         filteredInputs = inputs.filter(isValid)
         if (filteredInputs.length == inputs.length) {
             makeAjaxCall("confirm vcode");
+            displayButtonMsg(false, id_confirm_vcode, "error");
         } else {
             inputs.forEach((input) => {
                 manageError(input);
             })
         }
+        ["keydown", "focusin"].forEach((type) => {
+            inputs.forEach((input) => {
+                input.addEventListener(type, () => {
+                    displayButtonMsg(false, id_confirm_vcode, "error");
+                })
+            })
+        })
     })
 };
 
@@ -148,8 +155,8 @@ function displayDescr(boolean, input, descrType) {
     }
 };
 
-function codeDescr(input) {
-    return eval(String(input.id) + "_description")
+function codeDescr(id) {
+    return eval(String(id.id) + "_description")
 };
 
 function manageError(input) {
@@ -165,6 +172,8 @@ function manageError(input) {
             displayError(true, input, "empty");
         } else if (input.value.length !== 10) {
             displayError(true, input, "insufficient");
+        } else if (Number(input.value.substr(0, 4)) > now.getFullYear()) {
+            displayError(true, input, "invalid");
         } else if (input.value.indexOf("113") !== 4) {
             displayError(true, input, "invalid");
         } else {
@@ -230,16 +239,16 @@ function displayError(boolean, input, errorType) {
             input.classList.add("border-transparent")
         }
         if (errorType == "unchecked") {
-            subject = matchJosa(`'${findLabel(input)}'`, "을를")
+            subject = matchJosa(`'${findLabel(input)}'`, "을를", true)
             narrativeClause = "체크해주세요."
         } else if (errorType == "empty") {
-            subject = matchJosa(findLabel(input), "을를")
+            subject = matchJosa(findLabel(input), "을를", true)
             narrativeClause = "입력해주세요."
         } else if (errorType == "insufficient") {
-            subject = matchJosa(findLabel(input), "이가")
+            subject = matchJosa(findLabel(input), "이가", true)
             narrativeClause = "덜 입력된 것 같아요."
         } else if (errorType == "invalid") {
-            subject = matchJosa(findLabel(input), "이가")
+            subject = matchJosa(findLabel(input), "이가", true)
             narrativeClause = "잘못 입력된 것 같아요."
         }
         errorMsg.innerText = `${subject} ${narrativeClause}`
@@ -254,23 +263,75 @@ function displayError(boolean, input, errorType) {
     }
 };
 
-function codeError(input) {
-    return eval(String(input.id) + "_error")
+function codeError(id) {
+    return eval(String(id.id) + "_error")
 };
 
-function matchJosa(word, josaType) {
-    var hasBatchim = (word.substr(-1).charCodeAt(0) - parseInt("ac00", 16)) % 28 > 0
-    var josaAdded
-    if (josaType == "을를") {
-        josaAdded = hasBatchim ? word + "을" : word + "를"
-    } else if (josaType == "이가") {
-        josaAdded = hasBatchim ? word + "이" : word + "가"
-    } else if (josaType == "은는") {
-        josaAdded = hasBatchim ? word + "은" : word + "는"
-    } else if (josaType == "와과") {
-        josaAdded = hasBatchim ? word + "과" : word + "와"
+function displayButtonMsg(boolean, button, type, sentence) {
+    var msg
+    if (type == "descr") {
+        msg = codeDescr(button);
+    } else if (type == "error") {
+        msg = codeError(button);
     }
-    return josaAdded
+    if (boolean == true) {
+        msg.innerText = sentence;
+        msg.hidden = false;
+    } else if (boolean == false) {
+        msg.innerText = null;
+        msg.hidden = true;
+    }
+};
+
+function pronounceLastDigit(number) {
+    var lastDigit = Number(number.substr(-1));
+    var pron;
+    if (lastDigit == 0) {
+        pron = "공";
+    } else if (lastDigit == 1) {
+        pron = "일";
+    } else if (lastDigit == 2) {
+        pron = "이";
+    } else if (lastDigit == 3) {
+        pron = "삼";
+    } else if (lastDigit == 4) {
+        pron = "사";
+    } else if (lastDigit == 5) {
+        pron = "오";
+    } else if (lastDigit == 6) {
+        pron = "육";
+    } else if (lastDigit == 7) {
+        pron = "칠";
+    } else if (lastDigit == 8) {
+        pron = "팔";
+    } else if (lastDigit == 9) {
+        pron = "구";
+    }
+    return pron;
+};
+
+function matchJosa(word, josaType, boolean) {
+    var hasBatchim = (word.substr(-1).charCodeAt(0) - parseInt("ac00", 16)) % 28 > 0;
+    var josa, result;
+    if (josaType == "을를") {
+        josa = hasBatchim ? "을" : "를";
+    } else if (josaType == "이가") {
+        josa = hasBatchim ? "이" : "가";
+    } else if (josaType == "은는") {
+        josa = hasBatchim ? "은" : "는";
+    } else if (josaType == "와과") {
+        josa = hasBatchim ? "과" : "와";
+    } else if (josaType == "로으로") {
+        josa = hasBatchim ? "으로" : "로";
+    } else if (josaType == "라는이라는") {
+        josa = hasBatchim ? "이라는" : "라는";
+    }
+    if (boolean) {
+        result = word + josa;
+    } else {
+        result = josa;
+    }
+    return result;
 };
 
 function findLabel(input) {
@@ -280,7 +341,7 @@ function findLabel(input) {
             labelStr = label.innerText
         }
     })
-    return labelStr
+    return labelStr;
 };
 
 function makeAjaxCall(callType) {
@@ -312,6 +373,12 @@ function makeAjaxCall(callType) {
         data: JSON.stringify(data),
         dataType: "json",
         contentType: "application/json",
+        beforeSend: function (xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+            freezeForm(true, inputs);
+        },
         success: function (object) {
             var status = object.status
             console.log(status);
@@ -328,9 +395,35 @@ function makeAjaxCall(callType) {
 };
 
 function handleAjaxCallback(status) {
-    if (status == "vcode confirmed") {
-        id_confirm_vcode_error.innerText = null;
-        id_confirm_vcode_error.hidden = true;
+    if (status == "vcode created and sent via mail, sms") {
+        displayButtonMsg(true, id_create_vcode, "descr", "인증번호가 전송되었어요!");
+        displayButtonMsg(false, id_create_vcode, "error");
+        stepOnes.forEach((input) => {
+            input.type == "checkbox" ? input.disabled = true : input.readOnly = true;
+        })
+        stepTwos.forEach((input) => {
+            input.disabled = false;
+        })
+        id_confirm_vcode.disabled = false;
+        initValidation(stepTwos, id_confirm_vcode);
+    } else if (status == "vcode created and sent via mail" ||
+        status == "vcode created and sent via sms" ||
+        status == "vcode created but not sent") {
+        freezeForm(false, inputs);
+        displayButtonMsg(true, id_create_vcode, "error", "인증번호 전송에 실패했어요.");
+        displayButtonMsg(false, id_create_vcode, "descr");
+        id_create_vcode.disabled = false;
+    } else if (status == "duplicate signup attempted") {
+        freezeForm(false, inputs);
+        displayButtonMsg(true, id_create_vcode, "error", `이미 ${id_student_id.value}${matchJosa(pronounceLastDigit(id_student_id.value), "라는이라는", false)} 학번으로 가입된 계정이 있어요!`);
+        displayButtonMsg(false, id_create_vcode, "descr");
+        id_create_vcode.disabled = false;
+    } else if (status == "invalid vcode") {
+        freezeForm(false, inputs);
+        displayButtonMsg(true, id_confirm_vcode, "error", "인증번호가 잘못 입력된 것 같아요.");
+        id_confirm_vcode.disabled = false;
+    } else if (status == "vcode confirmed") {
+        displayButtonMsg(false, id_confirm_vcode, "error");
         inputs = document.querySelectorAll("input");
         inputs.forEach((input) => {
             input.disabled = false;
@@ -338,14 +431,24 @@ function handleAjaxCallback(status) {
         })
         id_confirm_vcode.disabled = true;
         document.querySelector("form").submit();
-    } else if (status == "invalid vcode") {
-        id_confirm_vcode_error.innerText = "인증번호가 잘못 입력된 것 같아요.";
-        id_confirm_vcode_error.hidden = false;
     }
 };
 
 function isValid(input) {
     return input.type == "checkbox" ? input.checked : manageError(input) == false && codeDescr(input).hidden && codeError(input).hidden
+};
+
+function freezeForm(boolean, inputs) {
+    inputs.forEach((input) => {
+        if (input.type == "checkbox") {
+            boolean ? input.disabled = true : input.disabled = false;
+        } else if (input.disabled == false) {
+            boolean ? input.readOnly = true : input.readOnly = false;
+        }
+    })
+    buttons.forEach((button) => {
+        button.disabled = true;
+    })
 };
 
 function submitForm(button) {

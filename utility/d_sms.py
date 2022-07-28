@@ -3,7 +3,7 @@ import os, sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 from dongguk_film import settings
-from .hangul import *
+from .d_hangul import handle_hangul, pronounce_last_digit
 import time, hmac, hashlib, base64, requests, json
 
 
@@ -20,7 +20,7 @@ def send_sms(dict_data):
     type = data["type"]
     if type == "sign up":
         phone_vcode = data["content"]["phone_vcode"]
-        raw_content = f'[디닷에프] 휴대전화 번호 인증번호는 {phone_vcode}{handle_hangul(pronounce_last_number(phone_vcode), "이에요예요", False)}!'
+        raw_content = f'[디닷에프] 휴대전화 번호 인증번호는 {phone_vcode}{handle_hangul(pronounce_last_digit(phone_vcode), "이에요예요", False)}!'
     service = init_service()
     from_no = mgt_phone
     to_no = "".join(filter(str.isalnum, data["phone"]))

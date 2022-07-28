@@ -1,27 +1,27 @@
-def pronounce_last_number(str_number):
+def pronounce_last_digit(str_number):
     num = str_number
-    n = num[-1]
+    last_digit = num[-1]
     pron = (
         "공"
-        if n == "0"
+        if last_digit == "0"
         else "일"
-        if n == "1"
+        if last_digit == "1"
         else "이"
-        if n == "2"
+        if last_digit == "2"
         else "삼"
-        if n == "3"
+        if last_digit == "3"
         else "사"
-        if n == "4"
+        if last_digit == "4"
         else "오"
-        if n == "5"
+        if last_digit == "5"
         else "육"
-        if n == "6"
+        if last_digit == "6"
         else "칠"
-        if n == "7"
+        if last_digit == "7"
         else "팔"
-        if n == "8"
+        if last_digit == "8"
         else "구"
-        if n == "9"
+        if last_digit == "9"
         else None
     )
     str_pron = pron

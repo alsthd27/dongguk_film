@@ -3,8 +3,8 @@ from django import forms
 from django.utils import timezone
 from django.contrib.auth.models import User
 from .models import Metadata
-from utility.discord_webhook import send_msg
-from utility.views import validation
+from utility.d_discord import send_msg
+from utility.d_utils import validation
 
 
 checkbox_input_class = "h-4 w-4 text-flamingo-600 rounded border-gray-300"
@@ -100,7 +100,7 @@ class SocialSignupForm(SignupForm):
         widget=forms.TextInput(
             attrs={
                 "type": "text",
-                "class": f"{text_input_class} {step_two_class} {only_number_class} {text_input_focus_state_class} {text_input_disabled_state_class}",
+                "class": f"{text_input_class} {step_two_class} {only_number_class} {text_input_focus_state_class} {text_input_read_only_state_class} {text_input_disabled_state_class}",
                 "placeholder": "000000",
                 "required": "",
                 "disabled": "",
@@ -114,7 +114,7 @@ class SocialSignupForm(SignupForm):
         widget=forms.TextInput(
             attrs={
                 "type": "text",
-                "class": f"{text_input_class} {step_two_class} {only_number_class} {text_input_focus_state_class} {text_input_disabled_state_class}",
+                "class": f"{text_input_class} {step_two_class} {only_number_class} {text_input_focus_state_class} {text_input_read_only_state_class} {text_input_disabled_state_class}",
                 "placeholder": "000000",
                 "required": "",
                 "disabled": "",
@@ -136,8 +136,8 @@ class SocialSignupForm(SignupForm):
                 "email": email,
                 "phone": phone,
             }
-            filtered_user = User.objects.filter(username=student_id)
-            if filtered_user.count() > 0:
+            user_registered_with_this_student_id = User.objects.filter(username=student_id)
+            if user_registered_with_this_student_id.count() > 0:
                 send_msg(request, "duplicate signup attempted")
                 return None
             if validation(raw_data, "sign up") == False:
