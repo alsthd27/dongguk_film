@@ -53,20 +53,18 @@ NCP_SENS_SMS_SERVICE_ID = get_secret("NCP_SENS_SMS_SERVICE_ID")
 MGT_PHONE = get_secret("MGT_PHONE")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = ["*"]
-# DEBUG = False
+DEBUG = False
 
-# ALLOWED_HOSTS = ["dongguk.film", "www.dongguk.film"]
+ALLOWED_HOSTS = ["dongguk.film", "www.dongguk.film"]
 
 
 # Security
 
-# SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = True
 
-# SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
-# CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 
 # Application definition
