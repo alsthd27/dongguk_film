@@ -118,7 +118,8 @@ def confirm_vcode(request):
                         phone_vcode=phone_vcode,
                     )
                     context = {"status": "vcode confirmed"}
-                    vcode.delete()
+                    vcode.confirmed = True
+                    vcode.save()
                 except:
                     context = {"status": "invalid vcode"}
             else:

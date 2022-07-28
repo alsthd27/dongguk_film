@@ -17,6 +17,7 @@ class Vcode(models.Model):
     student_id = models.CharField(max_length=10, null=True, blank=True)
     email_vcode = models.CharField(max_length=6, null=True, blank=True)
     phone_vcode = models.CharField(max_length=6, null=True, blank=True)
+    confirmed = models.BooleanField(default=False)
     will_expire_on = models.DateTimeField(null=True, blank=True)
 
     class Meta:

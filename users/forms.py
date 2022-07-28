@@ -3,6 +3,7 @@ from django import forms
 from django.utils import timezone
 from django.contrib.auth.models import User
 from .models import Metadata
+from users.models import Vcode
 from utility.d_discord import send_msg
 from utility.d_utils import validation
 
@@ -137,12 +138,18 @@ class SocialSignupForm(SignupForm):
                 "phone": phone,
             }
             user_registered_with_this_student_id = User.objects.filter(username=student_id)
+            confirmed_vcode = Vcode.objects.filter(student_id=student_id, confirmed=True)
             if user_registered_with_this_student_id.count() > 0:
                 send_msg(request, "duplicate signup attempted")
                 return None
-            if validation(raw_data, "sign up") == False:
+            elif confirmed_vcode.count() == 0:
+                send_msg(request, "verification process bypassed")
+                return None
+            elif validation(raw_data, "sign up") == False:
                 send_msg(request, "server-side validation failed")
                 return None
+            else:
+                confirmed_vcode.delete()
         else:
             send_msg(request, "unexpected request")
         return self.save(request, raw_data)

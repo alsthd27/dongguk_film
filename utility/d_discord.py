@@ -25,6 +25,7 @@ def format_msg(dict_content, str_msg_type):
         if type == "unexpected request"
         or type == "server-side validation failed"
         or type == "duplicate signup attempted"
+        or type == "verification process bypassed"
         else color.dark_gray()
     )
     embed = discord.Embed(
@@ -96,6 +97,16 @@ def send_msg(request, str_msg_type):
             "url": "",
             "thumbnail_url": "",
             "description": "Duplicate signup attempted. It seems that the user entered a student id already registered in the DB.",
+        }
+    elif type == "verification process bypassed":
+        webhook = get_webhook("dev")
+        individual_content = {
+            "picture_url": default_picture_url,
+            "author_url": "",
+            "title": "Verification Process Bypassed",
+            "url": "",
+            "thumbnail_url": "",
+            "description": "Verification Process Bypassed. It seems that the user tried to sign up in an unusual way.",
         }
     content = {
         "name": request.user,
